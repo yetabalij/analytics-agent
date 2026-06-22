@@ -8,6 +8,7 @@ node_modules/
 
 #environment
 .env
+backend/.env
 
 #logs
 logs/
