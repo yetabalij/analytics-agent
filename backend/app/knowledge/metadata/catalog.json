@@ -1,0 +1,2378 @@
+[
+    {
+        "table": "accounts",
+        "columns": [
+            {
+                "name": "account_id",
+                "type": "int"
+            },
+            {
+                "name": "account_name",
+                "type": "varchar"
+            },
+            {
+                "name": "account_number",
+                "type": "varchar"
+            },
+            {
+                "name": "account_subtype",
+                "type": "varchar"
+            },
+            {
+                "name": "account_type",
+                "type": "enum"
+            },
+            {
+                "name": "atm_card_issued",
+                "type": "tinyint"
+            },
+            {
+                "name": "atm_card_number",
+                "type": "varchar"
+            },
+            {
+                "name": "atm_pin_hash",
+                "type": "varchar"
+            },
+            {
+                "name": "available_balance",
+                "type": "decimal"
+            },
+            {
+                "name": "balance",
+                "type": "decimal"
+            },
+            {
+                "name": "checkbook_issued",
+                "type": "tinyint"
+            },
+            {
+                "name": "closed_date",
+                "type": "date"
+            },
+            {
+                "name": "created_at",
+                "type": "timestamp"
+            },
+            {
+                "name": "currency_code",
+                "type": "varchar"
+            },
+            {
+                "name": "customer_id",
+                "type": "int"
+            },
+            {
+                "name": "interest_rate",
+                "type": "decimal"
+            },
+            {
+                "name": "is_joint",
+                "type": "tinyint"
+            },
+            {
+                "name": "joint_owner1_id",
+                "type": "int"
+            },
+            {
+                "name": "joint_owner2_id",
+                "type": "int"
+            },
+            {
+                "name": "joint_owner3_id",
+                "type": "int"
+            },
+            {
+                "name": "last_transaction_date",
+                "type": "date"
+            },
+            {
+                "name": "maturity_date",
+                "type": "date"
+            },
+            {
+                "name": "min_balance_required",
+                "type": "decimal"
+            },
+            {
+                "name": "monthly_maintenance_fee",
+                "type": "decimal"
+            },
+            {
+                "name": "notification_preferences",
+                "type": "text"
+            },
+            {
+                "name": "opened_date",
+                "type": "date"
+            },
+            {
+                "name": "overdraft_limit",
+                "type": "decimal"
+            },
+            {
+                "name": "overdraft_protect",
+                "type": "tinyint"
+            },
+            {
+                "name": "statement_cycle",
+                "type": "enum"
+            },
+            {
+                "name": "statement_method",
+                "type": "enum"
+            },
+            {
+                "name": "status",
+                "type": "enum"
+            },
+            {
+                "name": "updated_at",
+                "type": "timestamp"
+            }
+        ]
+    },
+    {
+        "table": "atm_machines",
+        "columns": [
+            {
+                "name": "accessibility_features",
+                "type": "text"
+            },
+            {
+                "name": "address_line1",
+                "type": "varchar"
+            },
+            {
+                "name": "address_line2",
+                "type": "varchar"
+            },
+            {
+                "name": "atm_code",
+                "type": "varchar"
+            },
+            {
+                "name": "atm_id",
+                "type": "int"
+            },
+            {
+                "name": "atm_location",
+                "type": "varchar"
+            },
+            {
+                "name": "atm_type",
+                "type": "enum"
+            },
+            {
+                "name": "branch_id",
+                "type": "int"
+            },
+            {
+                "name": "cash_capacity",
+                "type": "decimal"
+            },
+            {
+                "name": "city",
+                "type": "varchar"
+            },
+            {
+                "name": "created_at",
+                "type": "timestamp"
+            },
+            {
+                "name": "currency_denominations",
+                "type": "text"
+            },
+            {
+                "name": "current_cash_level",
+                "type": "decimal"
+            },
+            {
+                "name": "has_cardless_capability",
+                "type": "tinyint"
+            },
+            {
+                "name": "has_check_capability",
+                "type": "tinyint"
+            },
+            {
+                "name": "has_deposit_capability",
+                "type": "tinyint"
+            },
+            {
+                "name": "has_envelope_free",
+                "type": "tinyint"
+            },
+            {
+                "name": "has_nfc_capability",
+                "type": "tinyint"
+            },
+            {
+                "name": "installed_date",
+                "type": "date"
+            },
+            {
+                "name": "last_maintenance_date",
+                "type": "date"
+            },
+            {
+                "name": "latitude",
+                "type": "decimal"
+            },
+            {
+                "name": "longitude",
+                "type": "decimal"
+            },
+            {
+                "name": "manufacturer",
+                "type": "varchar"
+            },
+            {
+                "name": "model",
+                "type": "varchar"
+            },
+            {
+                "name": "next_maintenance_date",
+                "type": "date"
+            },
+            {
+                "name": "notes",
+                "type": "text"
+            },
+            {
+                "name": "screen_size",
+                "type": "varchar"
+            },
+            {
+                "name": "serial_number",
+                "type": "varchar"
+            },
+            {
+                "name": "software_version",
+                "type": "varchar"
+            },
+            {
+                "name": "state",
+                "type": "varchar"
+            },
+            {
+                "name": "status",
+                "type": "enum"
+            },
+            {
+                "name": "transaction_count_monthly",
+                "type": "int"
+            },
+            {
+                "name": "transaction_count_today",
+                "type": "int"
+            },
+            {
+                "name": "updated_at",
+                "type": "timestamp"
+            },
+            {
+                "name": "zip_code",
+                "type": "varchar"
+            }
+        ]
+    },
+    {
+        "table": "atm_transactions",
+        "columns": [
+            {
+                "name": "atm_card_number",
+                "type": "varchar"
+            },
+            {
+                "name": "atm_id",
+                "type": "int"
+            },
+            {
+                "name": "atm_transaction_id",
+                "type": "int"
+            },
+            {
+                "name": "card_present",
+                "type": "tinyint"
+            },
+            {
+                "name": "completion_time",
+                "type": "datetime"
+            },
+            {
+                "name": "customer_id",
+                "type": "int"
+            },
+            {
+                "name": "entry_mode",
+                "type": "varchar"
+            },
+            {
+                "name": "error_code",
+                "type": "varchar"
+            },
+            {
+                "name": "error_description",
+                "type": "text"
+            },
+            {
+                "name": "processing_time",
+                "type": "decimal"
+            },
+            {
+                "name": "response_code",
+                "type": "varchar"
+            },
+            {
+                "name": "response_message",
+                "type": "varchar"
+            },
+            {
+                "name": "start_time",
+                "type": "datetime"
+            },
+            {
+                "name": "terminal_id",
+                "type": "varchar"
+            },
+            {
+                "name": "transaction_id",
+                "type": "int"
+            },
+            {
+                "name": "transaction_sequence_number",
+                "type": "int"
+            }
+        ]
+    },
+    {
+        "table": "audit_logs",
+        "columns": [
+            {
+                "name": "action",
+                "type": "enum"
+            },
+            {
+                "name": "affected_rows",
+                "type": "int"
+            },
+            {
+                "name": "audit_id",
+                "type": "int"
+            },
+            {
+                "name": "audit_notes",
+                "type": "text"
+            },
+            {
+                "name": "compliance_category",
+                "type": "varchar"
+            },
+            {
+                "name": "field_name",
+                "type": "varchar"
+            },
+            {
+                "name": "ip_address",
+                "type": "varchar"
+            },
+            {
+                "name": "is_sensitive",
+                "type": "tinyint"
+            },
+            {
+                "name": "new_value",
+                "type": "text"
+            },
+            {
+                "name": "old_value",
+                "type": "text"
+            },
+            {
+                "name": "record_id",
+                "type": "int"
+            },
+            {
+                "name": "session_id",
+                "type": "varchar"
+            },
+            {
+                "name": "table_name",
+                "type": "varchar"
+            },
+            {
+                "name": "timestamp",
+                "type": "datetime"
+            },
+            {
+                "name": "user_agent",
+                "type": "varchar"
+            },
+            {
+                "name": "user_id",
+                "type": "int"
+            },
+            {
+                "name": "user_type",
+                "type": "enum"
+            }
+        ]
+    },
+    {
+        "table": "bill_payments",
+        "columns": [
+            {
+                "name": "account_id",
+                "type": "int"
+            },
+            {
+                "name": "amount",
+                "type": "decimal"
+            },
+            {
+                "name": "bill_category",
+                "type": "enum"
+            },
+            {
+                "name": "bill_payment_id",
+                "type": "int"
+            },
+            {
+                "name": "bill_subcategory",
+                "type": "varchar"
+            },
+            {
+                "name": "confirmation_number",
+                "type": "varchar"
+            },
+            {
+                "name": "created_at",
+                "type": "timestamp"
+            },
+            {
+                "name": "customer_id",
+                "type": "int"
+            },
+            {
+                "name": "due_date",
+                "type": "date"
+            },
+            {
+                "name": "failure_reason",
+                "type": "varchar"
+            },
+            {
+                "name": "is_auto_pay",
+                "type": "tinyint"
+            },
+            {
+                "name": "is_recurring",
+                "type": "tinyint"
+            },
+            {
+                "name": "next_scheduled_date",
+                "type": "date"
+            },
+            {
+                "name": "notes",
+                "type": "text"
+            },
+            {
+                "name": "payee_account_number",
+                "type": "varchar"
+            },
+            {
+                "name": "payee_address",
+                "type": "varchar"
+            },
+            {
+                "name": "payee_city",
+                "type": "varchar"
+            },
+            {
+                "name": "payee_name",
+                "type": "varchar"
+            },
+            {
+                "name": "payee_routing_number",
+                "type": "varchar"
+            },
+            {
+                "name": "payee_state",
+                "type": "varchar"
+            },
+            {
+                "name": "payee_zip",
+                "type": "varchar"
+            },
+            {
+                "name": "payment_date",
+                "type": "date"
+            },
+            {
+                "name": "payment_status",
+                "type": "enum"
+            },
+            {
+                "name": "processing_fee",
+                "type": "decimal"
+            },
+            {
+                "name": "recurrence_frequency",
+                "type": "varchar"
+            },
+            {
+                "name": "schedule_type",
+                "type": "enum"
+            },
+            {
+                "name": "transaction_id",
+                "type": "int"
+            },
+            {
+                "name": "updated_at",
+                "type": "timestamp"
+            }
+        ]
+    },
+    {
+        "table": "branches",
+        "columns": [
+            {
+                "name": "address_line1",
+                "type": "varchar"
+            },
+            {
+                "name": "address_line2",
+                "type": "varchar"
+            },
+            {
+                "name": "branch_code",
+                "type": "varchar"
+            },
+            {
+                "name": "branch_id",
+                "type": "int"
+            },
+            {
+                "name": "branch_name",
+                "type": "varchar"
+            },
+            {
+                "name": "branch_type",
+                "type": "enum"
+            },
+            {
+                "name": "city",
+                "type": "varchar"
+            },
+            {
+                "name": "country",
+                "type": "varchar"
+            },
+            {
+                "name": "created_at",
+                "type": "timestamp"
+            },
+            {
+                "name": "email",
+                "type": "varchar"
+            },
+            {
+                "name": "establishment_date",
+                "type": "date"
+            },
+            {
+                "name": "fax_number",
+                "type": "varchar"
+            },
+            {
+                "name": "has_drive_thru",
+                "type": "tinyint"
+            },
+            {
+                "name": "has_parking",
+                "type": "tinyint"
+            },
+            {
+                "name": "has_safe_deposit",
+                "type": "tinyint"
+            },
+            {
+                "name": "has_wheelchair_access",
+                "type": "tinyint"
+            },
+            {
+                "name": "holiday_hours",
+                "type": "text"
+            },
+            {
+                "name": "is_active",
+                "type": "tinyint"
+            },
+            {
+                "name": "manager_id",
+                "type": "int"
+            },
+            {
+                "name": "manager_name",
+                "type": "varchar"
+            },
+            {
+                "name": "notes",
+                "type": "text"
+            },
+            {
+                "name": "number_of_atms",
+                "type": "int"
+            },
+            {
+                "name": "number_of_tellers",
+                "type": "int"
+            },
+            {
+                "name": "operating_hours",
+                "type": "varchar"
+            },
+            {
+                "name": "phone_number",
+                "type": "varchar"
+            },
+            {
+                "name": "region",
+                "type": "varchar"
+            },
+            {
+                "name": "square_footage",
+                "type": "int"
+            },
+            {
+                "name": "state",
+                "type": "varchar"
+            },
+            {
+                "name": "timezone",
+                "type": "varchar"
+            },
+            {
+                "name": "updated_at",
+                "type": "timestamp"
+            },
+            {
+                "name": "weekend_hours",
+                "type": "varchar"
+            },
+            {
+                "name": "zip_code",
+                "type": "varchar"
+            }
+        ]
+    },
+    {
+        "table": "card_transactions",
+        "columns": [
+            {
+                "name": "authorization_code",
+                "type": "varchar"
+            },
+            {
+                "name": "card_id",
+                "type": "int"
+            },
+            {
+                "name": "card_present",
+                "type": "tinyint"
+            },
+            {
+                "name": "card_transaction_id",
+                "type": "int"
+            },
+            {
+                "name": "cashback_amount",
+                "type": "decimal"
+            },
+            {
+                "name": "chip_used",
+                "type": "tinyint"
+            },
+            {
+                "name": "merchant_category_code",
+                "type": "varchar"
+            },
+            {
+                "name": "merchant_city",
+                "type": "varchar"
+            },
+            {
+                "name": "merchant_country",
+                "type": "varchar"
+            },
+            {
+                "name": "merchant_id",
+                "type": "varchar"
+            },
+            {
+                "name": "merchant_name",
+                "type": "varchar"
+            },
+            {
+                "name": "merchant_state",
+                "type": "varchar"
+            },
+            {
+                "name": "pin_verified",
+                "type": "tinyint"
+            },
+            {
+                "name": "pos_entry_mode",
+                "type": "varchar"
+            },
+            {
+                "name": "purchase_amount",
+                "type": "decimal"
+            },
+            {
+                "name": "reward_points_earned",
+                "type": "int"
+            },
+            {
+                "name": "signature_required",
+                "type": "tinyint"
+            },
+            {
+                "name": "transaction_id",
+                "type": "int"
+            },
+            {
+                "name": "transaction_type",
+                "type": "enum"
+            }
+        ]
+    },
+    {
+        "table": "credit_cards",
+        "columns": [
+            {
+                "name": "account_id",
+                "type": "int"
+            },
+            {
+                "name": "annual_fee",
+                "type": "decimal"
+            },
+            {
+                "name": "apr_balance_transfer",
+                "type": "decimal"
+            },
+            {
+                "name": "apr_cash_advance",
+                "type": "decimal"
+            },
+            {
+                "name": "apr_purchase",
+                "type": "decimal"
+            },
+            {
+                "name": "available_credit",
+                "type": "decimal"
+            },
+            {
+                "name": "cancelled_date",
+                "type": "date"
+            },
+            {
+                "name": "card_holder_name",
+                "type": "varchar"
+            },
+            {
+                "name": "card_id",
+                "type": "int"
+            },
+            {
+                "name": "card_level",
+                "type": "enum"
+            },
+            {
+                "name": "card_number",
+                "type": "varchar"
+            },
+            {
+                "name": "card_type",
+                "type": "enum"
+            },
+            {
+                "name": "cash_advance_fee",
+                "type": "decimal"
+            },
+            {
+                "name": "cashback_percentage",
+                "type": "decimal"
+            },
+            {
+                "name": "credit_limit",
+                "type": "decimal"
+            },
+            {
+                "name": "credit_score_at_issue",
+                "type": "int"
+            },
+            {
+                "name": "current_balance",
+                "type": "decimal"
+            },
+            {
+                "name": "customer_id",
+                "type": "int"
+            },
+            {
+                "name": "cvv_hash",
+                "type": "varchar"
+            },
+            {
+                "name": "expiry_date",
+                "type": "date"
+            },
+            {
+                "name": "foreign_transaction_fee",
+                "type": "decimal"
+            },
+            {
+                "name": "fraud_alerts_enabled",
+                "type": "tinyint"
+            },
+            {
+                "name": "is_chip_enabled",
+                "type": "tinyint"
+            },
+            {
+                "name": "is_contactless",
+                "type": "tinyint"
+            },
+            {
+                "name": "issued_date",
+                "type": "date"
+            },
+            {
+                "name": "last_activity_date",
+                "type": "date"
+            },
+            {
+                "name": "late_payment_fee",
+                "type": "decimal"
+            },
+            {
+                "name": "minimum_payment",
+                "type": "decimal"
+            },
+            {
+                "name": "monthly_statement_enabled",
+                "type": "tinyint"
+            },
+            {
+                "name": "payment_due_days",
+                "type": "int"
+            },
+            {
+                "name": "pin_set",
+                "type": "tinyint"
+            },
+            {
+                "name": "reward_points_balance",
+                "type": "int"
+            },
+            {
+                "name": "reward_program",
+                "type": "varchar"
+            },
+            {
+                "name": "statement_cycle_day",
+                "type": "int"
+            },
+            {
+                "name": "status",
+                "type": "enum"
+            }
+        ]
+    },
+    {
+        "table": "customers",
+        "columns": [
+            {
+                "name": "address_line1",
+                "type": "varchar"
+            },
+            {
+                "name": "address_line2",
+                "type": "varchar"
+            },
+            {
+                "name": "alternate_phone",
+                "type": "varchar"
+            },
+            {
+                "name": "annual_income",
+                "type": "decimal"
+            },
+            {
+                "name": "city",
+                "type": "varchar"
+            },
+            {
+                "name": "country",
+                "type": "varchar"
+            },
+            {
+                "name": "created_at",
+                "type": "timestamp"
+            },
+            {
+                "name": "credit_score",
+                "type": "int"
+            },
+            {
+                "name": "customer_id",
+                "type": "int"
+            },
+            {
+                "name": "customer_since",
+                "type": "date"
+            },
+            {
+                "name": "date_of_birth",
+                "type": "date"
+            },
+            {
+                "name": "email",
+                "type": "varchar"
+            },
+            {
+                "name": "employer",
+                "type": "varchar"
+            },
+            {
+                "name": "first_name",
+                "type": "varchar"
+            },
+            {
+                "name": "gender",
+                "type": "enum"
+            },
+            {
+                "name": "id_expiry_date",
+                "type": "date"
+            },
+            {
+                "name": "id_issue_date",
+                "type": "date"
+            },
+            {
+                "name": "id_number",
+                "type": "varchar"
+            },
+            {
+                "name": "id_type",
+                "type": "varchar"
+            },
+            {
+                "name": "is_verified",
+                "type": "tinyint"
+            },
+            {
+                "name": "last_name",
+                "type": "varchar"
+            },
+            {
+                "name": "middle_name",
+                "type": "varchar"
+            },
+            {
+                "name": "nationality",
+                "type": "varchar"
+            },
+            {
+                "name": "occupation",
+                "type": "varchar"
+            },
+            {
+                "name": "phone_number",
+                "type": "varchar"
+            },
+            {
+                "name": "risk_level",
+                "type": "enum"
+            },
+            {
+                "name": "ssn",
+                "type": "varchar"
+            },
+            {
+                "name": "state",
+                "type": "varchar"
+            },
+            {
+                "name": "status",
+                "type": "enum"
+            },
+            {
+                "name": "updated_at",
+                "type": "timestamp"
+            },
+            {
+                "name": "zip_code",
+                "type": "varchar"
+            }
+        ]
+    },
+    {
+        "table": "employees",
+        "columns": [
+            {
+                "name": "address_line1",
+                "type": "varchar"
+            },
+            {
+                "name": "address_line2",
+                "type": "varchar"
+            },
+            {
+                "name": "benefits_package",
+                "type": "varchar"
+            },
+            {
+                "name": "bonus_percentage",
+                "type": "decimal"
+            },
+            {
+                "name": "branch_id",
+                "type": "int"
+            },
+            {
+                "name": "certifications",
+                "type": "text"
+            },
+            {
+                "name": "city",
+                "type": "varchar"
+            },
+            {
+                "name": "country",
+                "type": "varchar"
+            },
+            {
+                "name": "created_at",
+                "type": "timestamp"
+            },
+            {
+                "name": "date_of_birth",
+                "type": "date"
+            },
+            {
+                "name": "department",
+                "type": "varchar"
+            },
+            {
+                "name": "email",
+                "type": "varchar"
+            },
+            {
+                "name": "emergency_contact_name",
+                "type": "varchar"
+            },
+            {
+                "name": "emergency_contact_phone",
+                "type": "varchar"
+            },
+            {
+                "name": "employee_id",
+                "type": "int"
+            },
+            {
+                "name": "employee_number",
+                "type": "varchar"
+            },
+            {
+                "name": "first_name",
+                "type": "varchar"
+            },
+            {
+                "name": "hire_date",
+                "type": "date"
+            },
+            {
+                "name": "is_active",
+                "type": "tinyint"
+            },
+            {
+                "name": "last_name",
+                "type": "varchar"
+            },
+            {
+                "name": "last_performance_review",
+                "type": "date"
+            },
+            {
+                "name": "middle_name",
+                "type": "varchar"
+            },
+            {
+                "name": "performance_rating",
+                "type": "enum"
+            },
+            {
+                "name": "phone_number",
+                "type": "varchar"
+            },
+            {
+                "name": "position",
+                "type": "varchar"
+            },
+            {
+                "name": "role",
+                "type": "enum"
+            },
+            {
+                "name": "salary",
+                "type": "decimal"
+            },
+            {
+                "name": "security_clearance_level",
+                "type": "int"
+            },
+            {
+                "name": "sick_days_accrued",
+                "type": "int"
+            },
+            {
+                "name": "ssn",
+                "type": "varchar"
+            },
+            {
+                "name": "state",
+                "type": "varchar"
+            },
+            {
+                "name": "supervisor_id",
+                "type": "int"
+            },
+            {
+                "name": "termination_date",
+                "type": "date"
+            },
+            {
+                "name": "title",
+                "type": "varchar"
+            },
+            {
+                "name": "training_completed",
+                "type": "text"
+            },
+            {
+                "name": "updated_at",
+                "type": "timestamp"
+            },
+            {
+                "name": "vacation_days_accrued",
+                "type": "int"
+            },
+            {
+                "name": "zip_code",
+                "type": "varchar"
+            }
+        ]
+    },
+    {
+        "table": "holdings",
+        "columns": [
+            {
+                "name": "average_cost",
+                "type": "decimal"
+            },
+            {
+                "name": "cost_basis",
+                "type": "decimal"
+            },
+            {
+                "name": "current_value",
+                "type": "decimal"
+            },
+            {
+                "name": "dividend_reinvest",
+                "type": "tinyint"
+            },
+            {
+                "name": "gain_loss",
+                "type": "decimal"
+            },
+            {
+                "name": "gain_loss_percentage",
+                "type": "decimal"
+            },
+            {
+                "name": "holding_id",
+                "type": "int"
+            },
+            {
+                "name": "holding_type",
+                "type": "enum"
+            },
+            {
+                "name": "investment_id",
+                "type": "int"
+            },
+            {
+                "name": "last_sale_date",
+                "type": "date"
+            },
+            {
+                "name": "last_sale_price",
+                "type": "decimal"
+            },
+            {
+                "name": "notes",
+                "type": "text"
+            },
+            {
+                "name": "purchase_date",
+                "type": "date"
+            },
+            {
+                "name": "purchase_price",
+                "type": "decimal"
+            },
+            {
+                "name": "quantity",
+                "type": "decimal"
+            },
+            {
+                "name": "security_id",
+                "type": "int"
+            },
+            {
+                "name": "status",
+                "type": "enum"
+            },
+            {
+                "name": "tax_lot_number",
+                "type": "varchar"
+            }
+        ]
+    },
+    {
+        "table": "investment_accounts",
+        "columns": [
+            {
+                "name": "account_id",
+                "type": "int"
+            },
+            {
+                "name": "account_number",
+                "type": "varchar"
+            },
+            {
+                "name": "account_type",
+                "type": "enum"
+            },
+            {
+                "name": "advisor_contact",
+                "type": "varchar"
+            },
+            {
+                "name": "annual_return_percentage",
+                "type": "decimal"
+            },
+            {
+                "name": "beneficiary_name",
+                "type": "varchar"
+            },
+            {
+                "name": "beneficiary_relationship",
+                "type": "varchar"
+            },
+            {
+                "name": "beneficiary_ssn",
+                "type": "varchar"
+            },
+            {
+                "name": "cash_balance",
+                "type": "decimal"
+            },
+            {
+                "name": "closed_date",
+                "type": "date"
+            },
+            {
+                "name": "customer_id",
+                "type": "int"
+            },
+            {
+                "name": "investment_advisor",
+                "type": "varchar"
+            },
+            {
+                "name": "investment_id",
+                "type": "int"
+            },
+            {
+                "name": "investment_objective",
+                "type": "varchar"
+            },
+            {
+                "name": "is_taxable",
+                "type": "tinyint"
+            },
+            {
+                "name": "last_performance_date",
+                "type": "date"
+            },
+            {
+                "name": "margin_balance",
+                "type": "decimal"
+            },
+            {
+                "name": "margin_interest_rate",
+                "type": "decimal"
+            },
+            {
+                "name": "opened_date",
+                "type": "date"
+            },
+            {
+                "name": "risk_tolerance",
+                "type": "enum"
+            },
+            {
+                "name": "status",
+                "type": "enum"
+            },
+            {
+                "name": "tax_bracket",
+                "type": "decimal"
+            },
+            {
+                "name": "time_horizon",
+                "type": "varchar"
+            },
+            {
+                "name": "total_cost_basis",
+                "type": "decimal"
+            },
+            {
+                "name": "total_gain_loss",
+                "type": "decimal"
+            },
+            {
+                "name": "total_value",
+                "type": "decimal"
+            },
+            {
+                "name": "trust_contact",
+                "type": "varchar"
+            },
+            {
+                "name": "trust_name",
+                "type": "varchar"
+            }
+        ]
+    },
+    {
+        "table": "loan_payments",
+        "columns": [
+            {
+                "name": "amount",
+                "type": "decimal"
+            },
+            {
+                "name": "auto_payment_id",
+                "type": "int"
+            },
+            {
+                "name": "created_at",
+                "type": "timestamp"
+            },
+            {
+                "name": "days_late",
+                "type": "int"
+            },
+            {
+                "name": "fee_paid",
+                "type": "decimal"
+            },
+            {
+                "name": "interest_paid",
+                "type": "decimal"
+            },
+            {
+                "name": "is_auto_payment",
+                "type": "tinyint"
+            },
+            {
+                "name": "late_charge_paid",
+                "type": "decimal"
+            },
+            {
+                "name": "loan_id",
+                "type": "int"
+            },
+            {
+                "name": "notes",
+                "type": "text"
+            },
+            {
+                "name": "payment_date",
+                "type": "date"
+            },
+            {
+                "name": "payment_id",
+                "type": "int"
+            },
+            {
+                "name": "payment_method",
+                "type": "enum"
+            },
+            {
+                "name": "payment_reference",
+                "type": "varchar"
+            },
+            {
+                "name": "payment_status",
+                "type": "enum"
+            },
+            {
+                "name": "principal_paid",
+                "type": "decimal"
+            },
+            {
+                "name": "receipt_number",
+                "type": "varchar"
+            },
+            {
+                "name": "remaining_balance",
+                "type": "decimal"
+            },
+            {
+                "name": "transaction_id",
+                "type": "int"
+            }
+        ]
+    },
+    {
+        "table": "loans",
+        "columns": [
+            {
+                "name": "account_id",
+                "type": "int"
+            },
+            {
+                "name": "accrued_interest",
+                "type": "decimal"
+            },
+            {
+                "name": "approval_date",
+                "type": "date"
+            },
+            {
+                "name": "apr",
+                "type": "decimal"
+            },
+            {
+                "name": "co_signer_id",
+                "type": "int"
+            },
+            {
+                "name": "collateral_type",
+                "type": "varchar"
+            },
+            {
+                "name": "collateral_value",
+                "type": "decimal"
+            },
+            {
+                "name": "created_at",
+                "type": "timestamp"
+            },
+            {
+                "name": "credit_approval_level",
+                "type": "enum"
+            },
+            {
+                "name": "current_balance",
+                "type": "decimal"
+            },
+            {
+                "name": "customer_id",
+                "type": "int"
+            },
+            {
+                "name": "disbursement_date",
+                "type": "date"
+            },
+            {
+                "name": "employment_verification",
+                "type": "tinyint"
+            },
+            {
+                "name": "income_verification",
+                "type": "tinyint"
+            },
+            {
+                "name": "interest_rate",
+                "type": "decimal"
+            },
+            {
+                "name": "last_payment_amount",
+                "type": "decimal"
+            },
+            {
+                "name": "last_payment_date",
+                "type": "date"
+            },
+            {
+                "name": "late_fee",
+                "type": "decimal"
+            },
+            {
+                "name": "loan_id",
+                "type": "int"
+            },
+            {
+                "name": "loan_number",
+                "type": "varchar"
+            },
+            {
+                "name": "loan_subtype",
+                "type": "varchar"
+            },
+            {
+                "name": "loan_term_months",
+                "type": "int"
+            },
+            {
+                "name": "loan_type",
+                "type": "enum"
+            },
+            {
+                "name": "maturity_date",
+                "type": "date"
+            },
+            {
+                "name": "monthly_payment",
+                "type": "decimal"
+            },
+            {
+                "name": "next_payment_date",
+                "type": "date"
+            },
+            {
+                "name": "notes",
+                "type": "text"
+            },
+            {
+                "name": "origination_fee",
+                "type": "decimal"
+            },
+            {
+                "name": "outstanding_principal",
+                "type": "decimal"
+            },
+            {
+                "name": "prepayment_penalty",
+                "type": "decimal"
+            },
+            {
+                "name": "principal_amount",
+                "type": "decimal"
+            },
+            {
+                "name": "processing_fee",
+                "type": "decimal"
+            },
+            {
+                "name": "purpose",
+                "type": "varchar"
+            },
+            {
+                "name": "risk_rating",
+                "type": "enum"
+            },
+            {
+                "name": "status",
+                "type": "enum"
+            },
+            {
+                "name": "updated_at",
+                "type": "timestamp"
+            }
+        ]
+    },
+    {
+        "table": "merchant_accounts",
+        "columns": [
+            {
+                "name": "account_number",
+                "type": "varchar"
+            },
+            {
+                "name": "address_line1",
+                "type": "varchar"
+            },
+            {
+                "name": "address_line2",
+                "type": "varchar"
+            },
+            {
+                "name": "annual_revenue",
+                "type": "decimal"
+            },
+            {
+                "name": "annual_volume",
+                "type": "decimal"
+            },
+            {
+                "name": "approved_date",
+                "type": "date"
+            },
+            {
+                "name": "average_ticket_size",
+                "type": "decimal"
+            },
+            {
+                "name": "business_start_date",
+                "type": "date"
+            },
+            {
+                "name": "business_type",
+                "type": "varchar"
+            },
+            {
+                "name": "chargeback_fee",
+                "type": "decimal"
+            },
+            {
+                "name": "city",
+                "type": "varchar"
+            },
+            {
+                "name": "contact_email",
+                "type": "varchar"
+            },
+            {
+                "name": "contact_person",
+                "type": "varchar"
+            },
+            {
+                "name": "contact_phone",
+                "type": "varchar"
+            },
+            {
+                "name": "country",
+                "type": "varchar"
+            },
+            {
+                "name": "created_at",
+                "type": "timestamp"
+            },
+            {
+                "name": "dba_name",
+                "type": "varchar"
+            },
+            {
+                "name": "discount_rate",
+                "type": "decimal"
+            },
+            {
+                "name": "email",
+                "type": "varchar"
+            },
+            {
+                "name": "employee_count",
+                "type": "int"
+            },
+            {
+                "name": "merchant_category",
+                "type": "varchar"
+            },
+            {
+                "name": "merchant_id",
+                "type": "int"
+            },
+            {
+                "name": "merchant_name",
+                "type": "varchar"
+            },
+            {
+                "name": "merchant_subcategory",
+                "type": "varchar"
+            },
+            {
+                "name": "monthly_fee",
+                "type": "decimal"
+            },
+            {
+                "name": "monthly_volume",
+                "type": "decimal"
+            },
+            {
+                "name": "notes",
+                "type": "text"
+            },
+            {
+                "name": "phone_number",
+                "type": "varchar"
+            },
+            {
+                "name": "processing_fee_rate",
+                "type": "decimal"
+            },
+            {
+                "name": "reserve_amount",
+                "type": "decimal"
+            },
+            {
+                "name": "reserve_percentage",
+                "type": "decimal"
+            },
+            {
+                "name": "risk_rating",
+                "type": "enum"
+            },
+            {
+                "name": "settlement_account_id",
+                "type": "int"
+            },
+            {
+                "name": "state",
+                "type": "varchar"
+            },
+            {
+                "name": "status",
+                "type": "enum"
+            },
+            {
+                "name": "tax_id",
+                "type": "varchar"
+            },
+            {
+                "name": "terminated_date",
+                "type": "date"
+            },
+            {
+                "name": "transaction_fee",
+                "type": "decimal"
+            },
+            {
+                "name": "updated_at",
+                "type": "timestamp"
+            },
+            {
+                "name": "website",
+                "type": "varchar"
+            },
+            {
+                "name": "zip_code",
+                "type": "varchar"
+            }
+        ]
+    },
+    {
+        "table": "notifications",
+        "columns": [
+            {
+                "name": "additional_data",
+                "type": "json"
+            },
+            {
+                "name": "branch_id",
+                "type": "int"
+            },
+            {
+                "name": "created_at",
+                "type": "timestamp"
+            },
+            {
+                "name": "created_by",
+                "type": "int"
+            },
+            {
+                "name": "creation_type",
+                "type": "enum"
+            },
+            {
+                "name": "customer_id",
+                "type": "int"
+            },
+            {
+                "name": "dismissed",
+                "type": "tinyint"
+            },
+            {
+                "name": "dismissed_timestamp",
+                "type": "datetime"
+            },
+            {
+                "name": "email_sent_status",
+                "type": "enum"
+            },
+            {
+                "name": "employee_id",
+                "type": "int"
+            },
+            {
+                "name": "expiry_date",
+                "type": "datetime"
+            },
+            {
+                "name": "link_url",
+                "type": "varchar"
+            },
+            {
+                "name": "message",
+                "type": "text"
+            },
+            {
+                "name": "notification_id",
+                "type": "int"
+            },
+            {
+                "name": "notification_type",
+                "type": "enum"
+            },
+            {
+                "name": "priority",
+                "type": "enum"
+            },
+            {
+                "name": "push_sent_status",
+                "type": "enum"
+            },
+            {
+                "name": "read_status",
+                "type": "tinyint"
+            },
+            {
+                "name": "read_timestamp",
+                "type": "datetime"
+            },
+            {
+                "name": "related_account_id",
+                "type": "int"
+            },
+            {
+                "name": "related_loan_id",
+                "type": "int"
+            },
+            {
+                "name": "related_transaction_id",
+                "type": "int"
+            },
+            {
+                "name": "scheduled_time",
+                "type": "datetime"
+            },
+            {
+                "name": "sent_time",
+                "type": "datetime"
+            },
+            {
+                "name": "sent_via_app",
+                "type": "tinyint"
+            },
+            {
+                "name": "sent_via_email",
+                "type": "tinyint"
+            },
+            {
+                "name": "sent_via_push",
+                "type": "tinyint"
+            },
+            {
+                "name": "sent_via_sms",
+                "type": "tinyint"
+            },
+            {
+                "name": "sms_sent_status",
+                "type": "enum"
+            },
+            {
+                "name": "subject",
+                "type": "varchar"
+            },
+            {
+                "name": "trigger_event",
+                "type": "varchar"
+            },
+            {
+                "name": "updated_at",
+                "type": "timestamp"
+            }
+        ]
+    },
+    {
+        "table": "online_banking_users",
+        "columns": [
+            {
+                "name": "account_locked_until",
+                "type": "datetime"
+            },
+            {
+                "name": "alert_preferences",
+                "type": "text"
+            },
+            {
+                "name": "created_at",
+                "type": "timestamp"
+            },
+            {
+                "name": "customer_id",
+                "type": "int"
+            },
+            {
+                "name": "failed_login_attempts",
+                "type": "int"
+            },
+            {
+                "name": "is_active",
+                "type": "tinyint"
+            },
+            {
+                "name": "is_locked",
+                "type": "tinyint"
+            },
+            {
+                "name": "last_login",
+                "type": "datetime"
+            },
+            {
+                "name": "last_login_ip",
+                "type": "varchar"
+            },
+            {
+                "name": "last_password_change",
+                "type": "datetime"
+            },
+            {
+                "name": "login_notifications_enabled",
+                "type": "tinyint"
+            },
+            {
+                "name": "mobile_app_registered",
+                "type": "tinyint"
+            },
+            {
+                "name": "mobile_device_id",
+                "type": "varchar"
+            },
+            {
+                "name": "online_user_id",
+                "type": "int"
+            },
+            {
+                "name": "password_expiry",
+                "type": "datetime"
+            },
+            {
+                "name": "password_hash",
+                "type": "varchar"
+            },
+            {
+                "name": "push_token",
+                "type": "varchar"
+            },
+            {
+                "name": "salt",
+                "type": "varchar"
+            },
+            {
+                "name": "security_answer1",
+                "type": "varchar"
+            },
+            {
+                "name": "security_answer2",
+                "type": "varchar"
+            },
+            {
+                "name": "security_answer3",
+                "type": "varchar"
+            },
+            {
+                "name": "security_question1",
+                "type": "varchar"
+            },
+            {
+                "name": "security_question2",
+                "type": "varchar"
+            },
+            {
+                "name": "security_question3",
+                "type": "varchar"
+            },
+            {
+                "name": "transaction_notifications_enabled",
+                "type": "tinyint"
+            },
+            {
+                "name": "two_factor_email",
+                "type": "varchar"
+            },
+            {
+                "name": "two_factor_enabled",
+                "type": "tinyint"
+            },
+            {
+                "name": "two_factor_phone",
+                "type": "varchar"
+            },
+            {
+                "name": "updated_at",
+                "type": "timestamp"
+            },
+            {
+                "name": "username",
+                "type": "varchar"
+            }
+        ]
+    },
+    {
+        "table": "securities",
+        "columns": [
+            {
+                "name": "avg_volume",
+                "type": "int"
+            },
+            {
+                "name": "beta",
+                "type": "decimal"
+            },
+            {
+                "name": "bond_rating",
+                "type": "varchar"
+            },
+            {
+                "name": "country",
+                "type": "varchar"
+            },
+            {
+                "name": "coupon_rate",
+                "type": "decimal"
+            },
+            {
+                "name": "created_at",
+                "type": "timestamp"
+            },
+            {
+                "name": "currency_code",
+                "type": "varchar"
+            },
+            {
+                "name": "current_price",
+                "type": "decimal"
+            },
+            {
+                "name": "day_change",
+                "type": "decimal"
+            },
+            {
+                "name": "day_change_percentage",
+                "type": "decimal"
+            },
+            {
+                "name": "dividend_amount",
+                "type": "decimal"
+            },
+            {
+                "name": "dividend_yield",
+                "type": "decimal"
+            },
+            {
+                "name": "earnings_per_share",
+                "type": "decimal"
+            },
+            {
+                "name": "ex_dividend_date",
+                "type": "date"
+            },
+            {
+                "name": "industry",
+                "type": "varchar"
+            },
+            {
+                "name": "is_active",
+                "type": "tinyint"
+            },
+            {
+                "name": "issued_date",
+                "type": "date"
+            },
+            {
+                "name": "market_cap",
+                "type": "decimal"
+            },
+            {
+                "name": "maturity_date",
+                "type": "date"
+            },
+            {
+                "name": "pe_ratio",
+                "type": "decimal"
+            },
+            {
+                "name": "previous_price",
+                "type": "decimal"
+            },
+            {
+                "name": "rating",
+                "type": "varchar"
+            },
+            {
+                "name": "sector",
+                "type": "varchar"
+            },
+            {
+                "name": "security_id",
+                "type": "int"
+            },
+            {
+                "name": "security_name",
+                "type": "varchar"
+            },
+            {
+                "name": "security_type",
+                "type": "enum"
+            },
+            {
+                "name": "target_price",
+                "type": "decimal"
+            },
+            {
+                "name": "ticker_symbol",
+                "type": "varchar"
+            },
+            {
+                "name": "updated_at",
+                "type": "timestamp"
+            },
+            {
+                "name": "volume",
+                "type": "int"
+            }
+        ]
+    },
+    {
+        "table": "teller_transactions",
+        "columns": [
+            {
+                "name": "branch_id",
+                "type": "int"
+            },
+            {
+                "name": "cash_balance_end",
+                "type": "decimal"
+            },
+            {
+                "name": "cash_balance_start",
+                "type": "decimal"
+            },
+            {
+                "name": "cash_deposit_total",
+                "type": "decimal"
+            },
+            {
+                "name": "cash_deposits",
+                "type": "int"
+            },
+            {
+                "name": "cash_withdrawal_total",
+                "type": "decimal"
+            },
+            {
+                "name": "cash_withdrawals",
+                "type": "int"
+            },
+            {
+                "name": "check_amount_total",
+                "type": "decimal"
+            },
+            {
+                "name": "checks_processed",
+                "type": "int"
+            },
+            {
+                "name": "employee_id",
+                "type": "int"
+            },
+            {
+                "name": "end_time",
+                "type": "datetime"
+            },
+            {
+                "name": "start_time",
+                "type": "datetime"
+            },
+            {
+                "name": "teller_number",
+                "type": "varchar"
+            },
+            {
+                "name": "teller_transaction_id",
+                "type": "int"
+            },
+            {
+                "name": "transaction_id",
+                "type": "int"
+            },
+            {
+                "name": "transfer_total",
+                "type": "decimal"
+            },
+            {
+                "name": "transfers_processed",
+                "type": "int"
+            }
+        ]
+    },
+    {
+        "table": "transactions",
+        "columns": [
+            {
+                "name": "account_id",
+                "type": "int"
+            },
+            {
+                "name": "amount",
+                "type": "decimal"
+            },
+            {
+                "name": "approval_code",
+                "type": "varchar"
+            },
+            {
+                "name": "authorization_code",
+                "type": "varchar"
+            },
+            {
+                "name": "balance_after",
+                "type": "decimal"
+            },
+            {
+                "name": "balance_before",
+                "type": "decimal"
+            },
+            {
+                "name": "category",
+                "type": "varchar"
+            },
+            {
+                "name": "currency_code",
+                "type": "varchar"
+            },
+            {
+                "name": "description",
+                "type": "varchar"
+            },
+            {
+                "name": "device_id",
+                "type": "varchar"
+            },
+            {
+                "name": "exchange_rate",
+                "type": "decimal"
+            },
+            {
+                "name": "fee_amount",
+                "type": "decimal"
+            },
+            {
+                "name": "fraud_check_flag",
+                "type": "tinyint"
+            },
+            {
+                "name": "ip_address",
+                "type": "varchar"
+            },
+            {
+                "name": "is_international",
+                "type": "tinyint"
+            },
+            {
+                "name": "is_online",
+                "type": "tinyint"
+            },
+            {
+                "name": "location",
+                "type": "varchar"
+            },
+            {
+                "name": "memo",
+                "type": "varchar"
+            },
+            {
+                "name": "merchant_category_code",
+                "type": "varchar"
+            },
+            {
+                "name": "merchant_name",
+                "type": "varchar"
+            },
+            {
+                "name": "posting_date",
+                "type": "date"
+            },
+            {
+                "name": "reference_number",
+                "type": "varchar"
+            },
+            {
+                "name": "settlement_date",
+                "type": "date"
+            },
+            {
+                "name": "source_channel",
+                "type": "enum"
+            },
+            {
+                "name": "status",
+                "type": "enum"
+            },
+            {
+                "name": "subcategory",
+                "type": "varchar"
+            },
+            {
+                "name": "tax_amount",
+                "type": "decimal"
+            },
+            {
+                "name": "terminal_id",
+                "type": "varchar"
+            },
+            {
+                "name": "trace_number",
+                "type": "varchar"
+            },
+            {
+                "name": "transaction_date",
+                "type": "datetime"
+            },
+            {
+                "name": "transaction_id",
+                "type": "int"
+            },
+            {
+                "name": "transaction_reference",
+                "type": "varchar"
+            },
+            {
+                "name": "transaction_subtype",
+                "type": "varchar"
+            },
+            {
+                "name": "transaction_type",
+                "type": "enum"
+            },
+            {
+                "name": "value_date",
+                "type": "date"
+            }
+        ]
+    }
+]
