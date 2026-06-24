@@ -1,0 +1,1033 @@
+Table Name customers
+Table Synonym CTB
+Table Comments Stores personal and demographic information of all bank
+customers
+Column Name Data types Description Foreign
+Keys
+customer_id INT Primary key - Unique customer PK
+identifier
+first_name VARCHAR(50) Customer's first name
+Last_name VARCHAR(50) Customer's last name
+middle_name VARCHAR(50) Customer's middle name
+date_of_birth DATE Customer's date of birth
+gender ENUM('M','F','Other') Customer's gender
+ssn VARCHAR(20) Social Security Number (unique)
+email VARCHAR(100) Customer's email address
+phone_number VARCHAR(20) Primary phone number
+alternate_phone VARCHAR(20) Secondary phone number
+address_line1 VARCHAR(100) Primary address line 1
+address_line2 VARCHAR(100) Primary address line 2
+city VARCHAR(50) City of residence
+state VARCHAR(50) State of residence
+zip_code VARCHAR(10) ZIP/Postal code
+country VARCHAR(50) Country of residence
+nationality VARCHAR(50) Customer's nationality
+occupation VARCHAR(50) Current occupation
+employer VARCHAR(100) Current employer name
+annual_income DECIMAL(15,2) Annual income in USD
+credit_score INT Credit score (300-850)
+customer_since DATE Date customer joined
+status ENUM('Active','Inactive','S Customer account status
+uspended','Closed')
+risk_level ENUM('Low','Medium','Hi Risk assessment level
+gh','Very High')
+is_verified BOOLEAN Identity verification status
+id_type VARCHAR(30) Identification document type
+id_number VARCHAR(50) Identification document number
+id_issue_date DATE ID document issue date
+id_expiry_date DATE ID document expiry date
+created_at TIMESTAMP Record creation timestamp
+updated_at TIMESTAMP Record last update timestamp
+Table Name accounts
+Table Synonym ACT
+Table Comments Manages all bank accounts including checking, savings, and
+business accounts.
+Column Name Data Type Description Foreign Key
+account_id INT Primary key - PK
+Unique account
+identifier
+customer_id INT Reference to account FK →
+owner customers.custome
+r_id
+account_number VARCHAR(20) Unique account -
+number
+account_type ENUM('Checking','Savings Type of account -
+','Money
+Market','Certificate of
+Deposit','Business')
+account_subtype VARCHAR(30) Sub-category of -
+account type
+account_name VARCHAR(100) Custom account -
+name
+currency_code VARCHAR(3) Account currency -
+(default USD)
+balance DECIMAL(15,2) Current account -
+balance
+available_balance DECIMAL(15,2) Available funds for -
+withdrawal
+interest_rate DECIMAL(5,2) Annual interest rate -
+overdraft_limit DECIMAL(15,2) Maximum overdraft -
+allowed
+overdraft_protect BOOLEAN Overdraft protection -
+enabled
+min_balance_requi DECIMAL(15,2) Minimum balance -
+red required
+monthly_maintena DECIMAL(10,2) Monthly service fee -
+nce_fee
+opened_date DATE Account opening -
+date
+closed_date DATE Account closing date -
+(if applicable)
+maturity_date DATE Maturity date for -
+CDs
+status ENUM('Active','Dormant',' Account status -
+Frozen','Closed')
+is_joint BOOLEAN Joint account -
+indicator
+joint_owner1_id INT First joint owner FK →
+reference customers.custome
+r_id
+joint_owner2_id INT Second joint owner FK →
+reference customers.custome
+r_id
+joint_owner3_id INT Third joint owner FK →
+reference customers.custome
+r_id
+atm_card_issued BOOLEAN ATM card issued -
+indicator
+atm_card_number VARCHAR(20) ATM card number -
+atm_pin_hash VARCHAR(255) Hashed ATM PIN -
+checkbook_issued BOOLEAN Checkbook issued -
+indicator
+last_transaction_d DATE Date of last -
+ate transaction
+statement_cycle ENUM('Monthly','Quarterl Statement frequency -
+y','Annual')
+statement_method ENUM('Mail','Email','Onli Statement delivery -
+ne Only') method
+notification_prefer TEXT User notification -
+ences settings
+created_at TIMESTAMP Record creation -
+timestamp
+updated_at TIMESTAMP Record last update
+timestamp
+Table Name Transactions
+Table Synonym TRAN
+Table Comments Records all financial transactions across accounts
+Column Name Data Type Description Foreign
+Key
+transaction_id INT Primary key - Unique transaction PK
+identifier
+account_id INT Account involved in transaction FK →
+accounts.ac
+count_id
+transaction_reference VARCHAR(50) Unique transaction reference -
+number
+transaction_type ENUM('Deposit' Type of transaction -
+,'Withdrawal','Tr
+ansfer','Payment'
+,'Fee','Interest','R
+efund','Chargeba
+ck')
+transaction_subtype VARCHAR(30) Sub-category of transaction -
+amount DECIMAL(15,2) Transaction amount -
+fee_amount DECIMAL(10,2) Fee charged for transaction -
+tax_amount DECIMAL(10,2) Tax applied to transaction -
+balance_before DECIMAL(15,2) Account balance before -
+transaction
+balance_after DECIMAL(15,2) Account balance after transaction -
+currency_code VARCHAR(3) Transaction currency -
+exchange_rate DECIMAL(10,4) Exchange rate applied (if foreign) -
+transaction_date DATETIME Date and time of transaction -
+value_date DATE Value date of transaction -
+posting_date DATE Date transaction was posted -
+description VARCHAR(255 Transaction description -
+)
+memo VARCHAR(255 Internal memo/notes -
+)
+category VARCHAR(50) Transaction category -
+subcategory VARCHAR(50) Transaction subcategory -
+merchant_name VARCHAR(100 Merchant name (if applicable) -
+)
+merchant_category_co VARCHAR(10) MCC code for merchant -
+de
+terminal_id VARCHAR(30) Terminal/device identifier -
+authorization_code VARCHAR(50) Transaction authorization code -
+reference_number VARCHAR(50) Reference number from partner -
+trace_number VARCHAR(50) Trace number for tracking -
+status ENUM('Pending' Transaction status -
+,'Completed','Fai
+led','Reversed','C
+ancelled')
+is_international BOOLEAN International transaction flag -
+is_online BOOLEAN Online transaction flag -
+source_channel ENUM('Branch',' Transaction channel -
+ATM','Mobile','
+Online
+Banking','Call
+Center','POS','Wi
+re Transfer')
+ip_address VARCHAR(45) IP address of transaction origin -
+device_id VARCHAR(100 Device identifier -
+)
+location VARCHAR(100 Transaction location -
+)
+fraud_check_flag BOOLEAN Fraud detection flag -
+approval_code VARCHAR(20) Approval code from processor -
+settlement_date DATE Settlement date for transaction
+Table Name loans
+Table Synonym LON
+Table Comments Manages all loan products including personal, auto, mortgage,
+and business loans.
+Column Name Data Type Description Foreign Key
+loan_id INT Primary key - Unique loan PK
+identifier
+customer_id INT Loan borrower reference FK →
+customers.cust
+omer_id
+account_id INT Associated account for FK →
+payments accounts.accou
+nt_id
+loan_number VARCHAR(20) Unique loan number -
+loan_type ENUM('Personal', Type of loan product -
+'Auto','Mortgage','
+Home
+Equity','Student','
+Business','Payday'
+)
+loan_subtype VARCHAR(30) Sub-category of loan -
+principal_amount DECIMAL(15,2) Original loan amount -
+interest_rate DECIMAL(6,2) Annual interest rate -
+apr DECIMAL(6,2) Annual Percentage Rate -
+loan_term_months INT Loan term in months -
+monthly_payment DECIMAL(10,2) Required monthly payment -
+origination_fee DECIMAL(10,2) Fee for loan origination -
+processing_fee DECIMAL(10,2) Loan processing fee -
+late_fee DECIMAL(10,2) Late payment penalty -
+prepayment_penalty DECIMAL(10,2) Penalty for early repayment -
+current_balance DECIMAL(15,2) Remaining loan balance -
+outstanding_principal DECIMAL(15,2) Principal amount remaining -
+accrued_interest DECIMAL(15,2) Interest accrued to date -
+next_payment_date DATE Date of next payment due -
+last_payment_date DATE Date of last payment -
+last_payment_amount DECIMAL(10,2) Amount of last payment -
+collateral_type VARCHAR(50) Type of collateral (if secured) -
+collateral_value DECIMAL(15,2) Value of collateral -
+co_signer_id INT Co-signer reference FK →
+customers.cust
+omer_id
+approval_date DATE Date loan was approved -
+disbursement_date DATE Date funds were disbursed -
+maturity_date DATE Loan maturity/end date -
+status ENUM('Pending',' Loan status -
+Approved','Active
+','Delinquent','Def
+aulted','Paid
+Off','Charged
+Off')
+risk_rating ENUM('A','B','C',' Risk assessment rating -
+D','E')
+purpose VARCHAR(255) Purpose of loan -
+employment_verificati BOOLEAN Employment verified flag -
+on
+income_verification BOOLEAN Income verified flag -
+credit_approval_level ENUM('Auto','M Approval workflow level -
+anual','Supervisor
+y')
+notes TEXT Additional notes/comments -
+created_at TIMESTAMP Record creation timestamp -
+updated_at TIMESTAMP Record last update timestamp
+Table Name Loan_payments
+Table Synonym LONP
+Table Comments Tracks all payments made towards loans
+Column Name Data Type Description Foreign Key
+payment_id INT Primary key - Unique PK
+payment identifier
+loan_id INT Loan being paid FK → loans.loan_id
+payment_referen VARCHAR(50) Unique payment -
+ce reference number
+payment_date DATE Date of payment -
+amount DECIMAL(15,2) Total payment amount -
+principal_paid DECIMAL(15,2) Portion applied to -
+principal
+interest_paid DECIMAL(15,2) Portion applied to interest -
+fee_paid DECIMAL(15,2) Fees paid -
+late_charge_paid DECIMAL(15,2) Late fees paid -
+payment_method ENUM('Bank Method of payment -
+Transfer','Check','Cas
+h','Debit Card','Auto
+Debit')
+payment_status ENUM('Pending','Co Payment status -
+mpleted','Failed','Rev
+ersed')
+transaction_id INT Associated transaction FK →
+transactions.transactio
+n_id
+remaining_balan DECIMAL(15,2) Balance after payment -
+ce
+days_late INT Days payment was late -
+is_auto_payment BOOLEAN Auto-debit payment flag -
+auto_payment_id INT Auto-payment setup ID -
+receipt_number VARCHAR(50) Payment receipt number -
+notes TEXT Additional payment notes -
+created_at TIMESTAMP Record creation
+timestamp
+Table Name Creadit_cards
+Table Synonym CRC
+Table Comments Manages credit card accounts and their details
+Column Name Data Type Description Foreign Key
+card_id INT Primary key - Unique PK
+card identifier
+customer_id INT Cardholder reference FK →
+customers.custo
+mer_id
+account_id INT Associated account for FK →
+billing accounts.account
+_id
+card_number VARCHAR(20) Primary Account -
+Number (PAN)
+card_type ENUM('Visa','MasterC Credit card network -
+ard','American
+Express','Discover')
+card_level ENUM('Standard','Gol Card tier/level -
+d','Platinum','Signature'
+,'Black')
+card_holder_name VARCHAR(100) Name on card -
+expiry_date DATE Card expiration date -
+cvv_hash VARCHAR(255) Hashed CVV code -
+credit_limit DECIMAL(15,2) Maximum credit limit -
+available_credit DECIMAL(15,2) Remaining available -
+credit
+current_balance DECIMAL(15,2) Current outstanding -
+balance
+minimum_payment DECIMAL(10,2) Minimum monthly -
+payment
+apr_purchase DECIMAL(6,2) APR for purchases -
+apr_cash_advance DECIMAL(6,2) APR for cash advances -
+apr_balance_transfer DECIMAL(6,2) APR for balance -
+transfers
+annual_fee DECIMAL(10,2) Annual card fee -
+foreign_transaction_f DECIMAL(5,2) Fee for foreign -
+ee transactions
+late_payment_fee DECIMAL(10,2) Late payment penalty -
+cash_advance_fee DECIMAL(5,2) Cash advance fee -
+reward_points_balan INT Accumulated reward -
+ce points
+reward_program VARCHAR(50) Rewards program name -
+cashback_percentage DECIMAL(5,2) Cashback rate -
+statement_cycle_day INT Day of month for -
+statement
+payment_due_days INT Days after statement for -
+payment
+status ENUM('Active','Suspe Card status -
+nded','Cancelled','Expir
+ed')
+issued_date DATE Date card was issued -
+cancelled_date DATE Date card was cancelled -
+last_activity_date DATE Last card usage date -
+credit_score_at_issue INT Credit score at issuance -
+is_chip_enabled BOOLEAN Chip technology flag -
+is_contactless BOOLEAN Contactless payment flag -
+pin_set BOOLEAN PIN has been set -
+fraud_alerts_enabled BOOLEAN Fraud alerts active -
+monthly_statement_e BOOLEAN Statement generation
+nabled active
+Table Name Card_transactions
+Table Synonym CTR
+Table Comments Details of transactions made using credit cards
+Column Name Data Type Description Foreign Key
+card_transaction_id INT Primary key PK
+- Unique
+identifier
+card_id INT Card used FK →
+for credit_cards.card_id
+transaction
+transaction_id INT Associated FK →
+transaction transactions.transaction_i
+d
+merchant_name VARCHAR(100) Merchant -
+name
+merchant_id VARCHAR(30) Merchant -
+identifier
+merchant_city VARCHAR(50) Merchant -
+city
+merchant_state VARCHAR(50) Merchant -
+state
+merchant_country VARCHAR(50) Merchant -
+country
+merchant_category_cod VARCHAR(10) MCC code -
+e
+transaction_type ENUM('Purchase','Cas Type of card -
+h Advance','Balance transaction
+Transfer','Refund','Fee')
+purchase_amount DECIMAL(15,2) Amount of -
+purchase
+cashback_amount DECIMAL(10,2) Cashback -
+earned
+reward_points_earned INT Points -
+earned from
+transaction
+authorization_code VARCHAR(50) Transaction -
+authorizatio
+n code
+pos_entry_mode VARCHAR(20) POS entry -
+method
+card_present BOOLEAN Physical -
+card present
+chip_used BOOLEAN EMV chip -
+used
+pin_verified BOOLEAN PIN verified -
+signature_required BOOLEAN Signature
+required
+Table Name Investment_accounts
+Table Synonym IVA
+Table Comments Manages investment accounts including brokerage, IRA, and
+retirement accounts
+Column Name Data Type Description Foreign Key
+investment_id INT Primary key - Unique PK
+investment identifier
+customer_id INT Account holder reference FK →
+customers.custo
+mer_id
+account_id INT Associated bank account FK →
+accounts.accoun
+t_id
+account_number VARCHAR(20) Unique investment account -
+number
+account_type ENUM('Brokerage','I Type of investment account -
+RA Traditional','IRA
+Roth','401(k)','Pension
+','529
+Plan','Trust','Mutual
+Fund','Annuity')
+investment_adviso VARCHAR(100) Advisor name -
+r
+advisor_contact VARCHAR(50) Advisor contact information -
+risk_tolerance ENUM('Conservative', Client's risk tolerance -
+'Moderate','Aggressive
+','Speculative')
+investment_objecti VARCHAR(100) Investment goals -
+ve
+time_horizon VARCHAR(50) Investment time frame -
+total_value DECIMAL(15,2) Total portfolio value -
+total_cost_basis DECIMAL(15,2) Total cost of investments -
+total_gain_loss DECIMAL(15,2) Total unrealized gain/loss -
+cash_balance DECIMAL(15,2) Cash held in account -
+margin_balance DECIMAL(15,2) Margin loan balance -
+margin_interest_ra DECIMAL(6,2) Margin loan interest rate -
+te
+annual_return_per DECIMAL(5,2) Annual return rate -
+centage
+last_performance_ DATE Last performance update -
+date
+opened_date DATE Account opening date -
+closed_date DATE Account closing date -
+status ENUM('Active','Dorm Account status -
+ant','Closed','Suspende
+d')
+is_taxable BOOLEAN Taxable account flag -
+tax_bracket DECIMAL(5,2) Tax bracket percentage -
+beneficiary_name VARCHAR(100) Beneficiary name -
+beneficiary_relatio VARCHAR(50) Relationship to beneficiary -
+nship
+beneficiary_ssn VARCHAR(20) Beneficiary SSN -
+trust_name VARCHAR(100) Trust name (if applicable) -
+trust_contact VARCHAR(100) Trust contact info -
+Table Name Securities
+Table Synonym IVA
+Table Comments Master list of securities available for investment
+Column Name Data Type Description Foreig
+n Key
+security_id INT Primary key - Unique PK
+security identifier
+ticker_symbol VARCHAR(10) Stock ticker symbol -
+security_name VARCHAR(100) Full security name -
+security_type ENUM('Stock','Bond','ETF','Mut Type of security -
+ual
+Fund','Option','Future','Forex','Co
+mmodity')
+sector VARCHAR(50) Industry sector -
+industry VARCHAR(50) Specific industry -
+country VARCHAR(50) Country of origin -
+currency_code VARCHAR(3) Trading currency -
+current_price DECIMAL(15,4) Current market price -
+previous_price DECIMAL(15,4) Previous close price -
+day_change DECIMAL(10,4) Price change from -
+previous
+day_change_percenta DECIMAL(6,2) Percentage price change -
+ge
+volume INT Current trading volume -
+avg_volume INT Average daily volume -
+market_cap DECIMAL(20,2) Market capitalization -
+pe_ratio DECIMAL(10,2) Price-to-earnings ratio -
+dividend_yield DECIMAL(6,2) Dividend yield -
+percentage
+dividend_amount DECIMAL(10,4) Dividend per share -
+ex_dividend_date DATE Ex-dividend date -
+earnings_per_share DECIMAL(10,2) EPS for fiscal year -
+beta DECIMAL(6,2) Volatility measure -
+rating VARCHAR(10) Analyst rating -
+target_price DECIMAL(15,4) Analyst target price -
+issued_date DATE Issue date -
+maturity_date DATE Maturity date (for -
+bonds)
+coupon_rate DECIMAL(6,2) Bond coupon rate -
+bond_rating VARCHAR(10) Bond credit rating -
+is_active BOOLEAN Security active status -
+created_at TIMESTAMP Record creation -
+timestamp
+updated_at TIMESTAMP Record last update
+timestamp
+Table Name holdings
+Table Synonym HLD
+Table Comments Tracks securities held in investment accounts
+Column Name Data Type Description Foreign Key
+holding_id INT Primary key - Unique holding PK
+identifier
+investment_id INT Investment account reference FK →
+investment_account
+s.investment_id
+security_id INT Security held FK →
+securities.security_i
+d
+quantity DECIMAL(15,4 Number of shares/units held -
+)
+average_cost DECIMAL(15,4 Average cost basis per share -
+)
+current_value DECIMAL(15,4 Current market value -
+)
+cost_basis DECIMAL(15,4 Total cost basis -
+)
+gain_loss DECIMAL(15,4 Unrealized gain/loss -
+)
+gain_loss_percent DECIMAL(6,2) Gain/loss percentage -
+age
+purchase_date DATE Date of purchase -
+purchase_price DECIMAL(15,4 Purchase price per share -
+)
+last_sale_date DATE Last sale date -
+last_sale_price DECIMAL(15,4 Last sale price -
+)
+dividend_reinvest BOOLEAN Dividend reinvestment flag -
+tax_lot_number VARCHAR(30) Tax lot identifier -
+holding_type ENUM('Long',' Long or short position -
+Short')
+status ENUM('Active', Holding status -
+'Sold','Partially
+Sold')
+notes TEXT Additional notes
+Table Name branches
+Table Synonym BRC
+Table Comments Contains information about all branch locations
+Column Name Data Type Description Foreign
+Key
+branch_id INT Primary key - Unique PK
+branch identifier
+branch_code VARCHAR(10) Unique branch code -
+branch_name VARCHAR(100) Full branch name -
+branch_type ENUM('Head Type of branch -
+Office','Regional','Local','Mobile
+Unit','Virtual')
+address_line1 VARCHAR(100) Branch address line 1 -
+address_line2 VARCHAR(100) Branch address line 2 -
+city VARCHAR(50) Branch city -
+state VARCHAR(50) Branch state -
+zip_code VARCHAR(10) Branch ZIP code -
+country VARCHAR(50) Branch country -
+phone_number VARCHAR(20) Branch phone number -
+fax_number VARCHAR(20) Branch fax number -
+email VARCHAR(100) Branch email address -
+manager_name VARCHAR(100) Branch manager name -
+manager_id INT Branch manager -
+employee ID
+region VARCHAR(50) Geographic region -
+timezone VARCHAR(50) Time zone -
+operating_hours VARCHAR(100) Regular operating hours -
+weekend_hours VARCHAR(100) Weekend operating -
+hours
+holiday_hours TEXT Holiday hours -
+establishment_date DATE Branch opening date -
+square_footage INT Building size in sq ft -
+number_of_atms INT Number of ATMs at -
+branch
+number_of_tellers INT Number of teller -
+stations
+has_safe_deposit BOOLEAN Safe deposit boxes -
+available
+has_drive_thru BOOLEAN Drive-through service -
+available
+has_parking BOOLEAN Parking available -
+has_wheelchair_access BOOLEAN Wheelchair accessible -
+is_active BOOLEAN Branch active status -
+notes TEXT Additional branch notes -
+created_at TIMESTAMP Record creation -
+timestamp
+updated_at TIMESTAMP Record last update -
+timestamp
+Table Name employess
+Table Synonym EMP
+Table Comments Manages employee records and information
+Column Name Data Type Description Foreign Key
+employee_id INT Primary key - Unique PK
+employee identifier
+branch_id INT Assigned branch reference FK →
+branches.branch_id
+employee_number VARCHAR(20) Unique employee number -
+first_name VARCHAR(50) Employee first name -
+last_name VARCHAR(50) Employee last name -
+middle_name VARCHAR(50) Employee middle name -
+date_of_birth DATE Employee date of birth -
+ssn VARCHAR(20) Employee SSN (unique) -
+email VARCHAR(10 Employee email -
+0)
+phone_number VARCHAR(20) Employee phone -
+address_line1 VARCHAR(10 Employee address line 1 -
+0)
+address_line2 VARCHAR(10 Employee address line 2 -
+0)
+city VARCHAR(50) Employee city -
+state VARCHAR(50) Employee state -
+zip_code VARCHAR(10) Employee ZIP code -
+country VARCHAR(50) Employee country -
+position VARCHAR(50) Job position title -
+department VARCHAR(50) Department name -
+title VARCHAR(50) Job title -
+role ENUM('Teller',' Role category -
+Customer
+Service','Loan
+Officer','Branch
+Manager','Regio
+nal
+Manager','Invest
+ment
+Advisor','Compl
+iance
+Officer','Fraud
+Analyst','IT
+Staff','Executive
+')
+supervisor_id INT Supervisor reference FK →
+employees.employ
+ee_id
+hire_date DATE Date of hire -
+termination_date DATE Date of termination -
+salary DECIMAL(15, Annual salary -
+2)
+bonus_percentage DECIMAL(5,2) Bonus percentage -
+benefits_package VARCHAR(50) Benefits package code -
+vacation_days_accru INT Vacation days earned -
+ed
+sick_days_accrued INT Sick days earned -
+performance_rating ENUM('Excelle Performance rating -
+nt','Good','Satisf
+actory','Needs
+Improvement','
+Unsatisfactory')
+last_performance_rev DATE Date of last review -
+iew
+training_completed TEXT Completed training list -
+certifications TEXT Professional certifications -
+security_clearance_le INT Security clearance level (1-5) -
+vel
+is_active BOOLEAN Employee active status -
+emergency_contact_n VARCHAR(10 Emergency contact name -
+ame 0)
+emergency_contact_p VARCHAR(20) Emergency contact phone -
+hone
+created_at TIMESTAMP Record creation timestamp -
+updated_at TIMESTAMP Record last update timestamp
+Table Name Teller_transactions
+Table Synonym TTA
+Table Comments Tracks teller-related transaction activities.
+Column Name Data Type Description Foreign Key
+teller_transaction_id INT Primary key - PK
+Unique identifier
+transaction_id INT Associated FK →
+transaction transactions.transaction_id
+employee_id INT Employee (teller) FK →
+reference employees.employee_id
+branch_id INT Branch reference FK → branches.branch_id
+teller_number VARCHAR(10) Teller station -
+number
+start_time DATETIME Transaction start -
+time
+end_time DATETIME Transaction end -
+time
+cash_balance_start DECIMAL(15,2) Cash balance at -
+start
+cash_balance_end DECIMAL(15,2) Cash balance at -
+end
+checks_processed INT Number of checks -
+processed
+check_amount_total DECIMAL(15,2) Total check -
+amount
+cash_deposits INT Number of cash -
+deposits
+cash_deposit_total DECIMAL(15,2) Total cash -
+deposits
+cash_withdrawals INT Number of cash -
+withdrawals
+cash_withdrawal_total DECIMAL(15,2) Total cash -
+withdrawals
+transfers_processed INT Number of -
+transfers
+transfer_total DECIMAL(15,2) Total transfer -
+amount
+Table Name Online_banking_users
+Table Synonym OBU
+Table Comments Manages online and mobile banking user credentials
+Column Name Data Type Description Foreign Key
+online_user_id INT Primary key - Unique PK
+user identifier
+customer_id INT Customer reference FK →
+customers.customer_id
+username VARCHAR(50) Login username -
+password_hash VARCHAR(25 Hashed password -
+5)
+salt VARCHAR(10 Password salt value -
+0)
+security_question1 VARCHAR(10 Security question 1 -
+0)
+security_answer1 VARCHAR(10 Answer to question 1 -
+0)
+security_question2 VARCHAR(10 Security question 2 -
+0)
+security_answer2 VARCHAR(10 Answer to question 2 -
+0)
+security_question3 VARCHAR(10 Security question 3 -
+0)
+security_answer3 VARCHAR(10 Answer to question 3 -
+0)
+two_factor_enabled BOOLEAN 2FA enabled flag -
+two_factor_phone VARCHAR(20) Phone for 2FA -
+two_factor_email VARCHAR(10 Email for 2FA -
+0)
+last_login DATETIME Last login timestamp -
+last_login_ip VARCHAR(45) IP of last login -
+failed_login_attempts INT Count of failed attempts -
+account_locked_until DATETIME Lock expiry time -
+is_locked BOOLEAN Account locked flag -
+is_active BOOLEAN User active status -
+last_password_change DATETIME Last password change -
+date
+password_expiry DATETIME Password expiry date -
+login_notifications_en BOOLEAN Login alerts enabled -
+abled
+transaction_notificatio BOOLEAN Transaction alerts -
+ns_enabled enabled
+alert_preferences TEXT Alert preferences JSON -
+mobile_app_registered BOOLEAN Mobile app registered -
+mobile_device_id VARCHAR(10 Mobile device ID -
+0)
+push_token VARCHAR(25 Push notification token -
+5)
+created_at TIMESTAMP Record creation -
+timestamp
+updated_at TIMESTAMP Record last update -
+timestamp
+Table Name Atm_machines
+Table Synonym ATM
+Table Comments Manages ATM machine inventory and status
+Column Name Data Type Description Foreign Key
+atm_id INT Primary key - Unique PK
+ATM identifier
+branch_id INT Associated branch FK →
+branches.branch_i
+d
+atm_code VARCHAR(20) Unique ATM code -
+atm_location VARCHAR(100) ATM location -
+description
+address_line1 VARCHAR(100) ATM address line 1 -
+address_line2 VARCHAR(100) ATM address line 2 -
+city VARCHAR(50) ATM city -
+state VARCHAR(50) ATM state -
+zip_code VARCHAR(10) ATM ZIP code -
+latitude DECIMAL(10,8) Geographic latitude -
+longitude DECIMAL(11,8) Geographic longitude -
+atm_type ENUM('On- ATM location type -
+Site','Off-
+Site','Mobile')
+manufacturer VARCHAR(50) ATM manufacturer -
+model VARCHAR(50) ATM model number -
+serial_number VARCHAR(50) ATM serial number -
+software_version VARCHAR(30) ATM software -
+version
+cash_capacity DECIMAL(15,2) Maximum cash -
+capacity
+current_cash_level DECIMAL(15,2) Current cash on hand -
+currency_denominations TEXT Available -
+denominations
+transaction_count_today INT Today's transaction -
+count
+transaction_count_month INT Monthly transaction -
+ly count
+last_maintenance_date DATE Last maintenance -
+date
+next_maintenance_date DATE Next scheduled -
+maintenance
+status ENUM('Online','Offli ATM status -
+ne','Out of
+Service','Under
+Maintenance')
+has_deposit_capability BOOLEAN Deposit capability -
+has_check_capability BOOLEAN Check deposit -
+capability
+has_envelope_free BOOLEAN Envelope-free -
+deposit
+has_cardless_capability BOOLEAN Cardless access -
+has_nfc_capability BOOLEAN NFC capability -
+screen_size VARCHAR(20) Screen size -
+description
+accessibility_features TEXT Accessibility features -
+installed_date DATE Installation date -
+notes TEXT Additional notes -
+created_at TIMESTAMP Record creation -
+timestamp
+updated_at TIMESTAMP Record last update -
+timestamp
+Table Name Atm_transactions
+Table Synonym ATT
+Table Comments Records ATM transaction details and processing
+Column Name Data Type Description Foreign Key
+atm_transaction_id INT Primary key PK
+- Unique
+identifier
+transaction_id INT Associated FK →
+transaction transactions.transaction_id
+atm_id INT ATM FK →
+machine atm_machines.atm_id
+reference
+customer_id INT Customer FK →
+performing customers.customer_id
+transaction
+atm_card_number VARCHAR(20) Card number -
+used
+card_present BOOLEAN Physical -
+card present
+entry_mode VARCHAR(20) Card entry -
+method
+terminal_id VARCHAR(30) Terminal -
+identifier
+transaction_sequence_number INT Sequence -
+number
+response_code VARCHAR(10) Response -
+code from
+ATM
+response_message VARCHAR(255) Response -
+message
+processing_time DECIMAL(5,2) Processing -
+time in
+seconds
+start_time DATETIME Transaction -
+start time
+completion_time DATETIME Transaction -
+completion
+time
+error_code VARCHAR(20) Error code if -
+any
+error_description TEXT Error
+description
+Table Name Merchant_accounts
+Table Synonym MRA
+Table Comments Manages merchant accounts for payment processing
+Column Name Data Type Description Foreig
+n Key
+merchant_id INT Primary key - Unique merchant PK
+identifier
+merchant_name VARCHAR(100) Merchant business name -
+merchant_category VARCHAR(50) Business category -
+merchant_subcategor VARCHAR(50) Business subcategory -
+y
+business_type VARCHAR(50) Type of business -
+tax_id VARCHAR(30) Tax ID (EIN) -
+dba_name VARCHAR(100) Doing Business As name -
+address_line1 VARCHAR(100) Address line 1 -
+address_line2 VARCHAR(100) Address line 2 -
+city VARCHAR(50) City -
+state VARCHAR(50) State -
+zip_code VARCHAR(10) ZIP code -
+country VARCHAR(50) Country -
+phone_number VARCHAR(20) Contact phone -
+email VARCHAR(100) Contact email -
+website VARCHAR(100) Business website -
+contact_person VARCHAR(100) Primary contact name -
+contact_phone VARCHAR(20) Contact phone -
+contact_email VARCHAR(100) Contact email -
+account_number VARCHAR(20) Merchant account number -
+settlement_account_i INT Settlement account reference -
+d
+processing_fee_rate DECIMAL(6,2) Processing fee percentage -
+discount_rate DECIMAL(6,2) Discount rate -
+transaction_fee DECIMAL(5,2) Per transaction fee -
+monthly_fee DECIMAL(10,2) Monthly service fee -
+chargeback_fee DECIMAL(10,2) Chargeback fee -
+reserve_percentage DECIMAL(6,2) Reserve hold percentage -
+reserve_amount DECIMAL(15,2) Reserve hold amount -
+average_ticket_size DECIMAL(10,2) Average transaction size -
+monthly_volume DECIMAL(15,2) Monthly processing volume -
+annual_volume DECIMAL(15,2) Annual processing volume -
+risk_rating ENUM('Low','Mediu Risk assessment -
+m','High','Very
+High')
+status ENUM('Active','Sus Account status -
+pended','Terminated',
+'Pending')
+approved_date DATE Approval date -
+terminated_date DATE Termination date -
+business_start_date DATE Business start date -
+employee_count INT Number of employees -
+annual_revenue DECIMAL(15,2) Annual revenue -
+notes TEXT Additional notes -
+created_at TIMESTAMP Record creation timestamp -
+updated_at TIMESTAMP Record last update timestamp -
+Table Name bill_payments
+Table Synonym BLP
+Table Comments Manages bill payments made by customers
+Column Name Data Type Description Foreign Key
+bill_payment_i INT Primary key - Unique identifier PK
+d
+customer_id INT Customer making payment FK →
+customers.custo
+mer_id
+account_id INT Account used for payment FK →
+accounts.accoun
+t_id
+transaction_id INT Associated transaction FK →
+transactions.tran
+saction_id
+payee_name VARCHAR(100) Payee/recipient name -
+payee_account VARCHAR(30) Payee account number -
+_number
+payee_routing VARCHAR(20) Payee routing number -
+_number
+payee_address VARCHAR(255) Payee address -
+payee_city VARCHAR(50) Payee city -
+payee_state VARCHAR(50) Payee state -
+payee_zip VARCHAR(10) Payee ZIP code -
+bill_category ENUM('Utilities','I Category of bill -
+nsurance','Loan','Cr
+edit
+Card','Rent','Mortg
+age','Subscription','
+Tax','Other')
+bill_subcatego VARCHAR(50) Subcategory of bill -
+ry
+amount DECIMAL(15,2) Payment amount -
+due_date DATE Bill due date -
+payment_date DATE Date payment was made -
+confirmation_ VARCHAR(50) Payment confirmation number -
+number
+processing_fee DECIMAL(10,2) Processing fee -
+schedule_type ENUM('One- Payment schedule type -
+Time','Recurring','
+Auto-Pay')
+recurrence_fre VARCHAR(20) Frequency of recurrence -
+quency
+next_schedule DATE Next scheduled payment date -
+d_date
+is_recurring BOOLEAN Recurring payment flag -
+is_auto_pay BOOLEAN Auto-pay enabled flag -
+payment_statu ENUM('Scheduled' Payment status -
+s ,'Pending','Processi
+ng','Completed','Fa
+iled','Cancelled')
+failure_reason VARCHAR(255) Reason for failure if any -
+notes TEXT Additional notes -
+created_at TIMESTAMP Record creation timestamp -
+updated_at TIMESTAMP Record last update timestamp
+Table Name audit_logs
+Table Synonym ADL
+Table Comments Tracks all system changes for compliance and security
+Column Name Data Type Description Foreign Key
+audit_id INT Primary key - Unique audit identifier PK
+table_name VARCHAR(50) Table that was changed -
+record_id INT ID of the record changed -
+action ENUM('INSER Action performed -
+T','UPDATE','D
+ELETE','SELE
+CT','LOGIN','L
+OGOUT','FAIL
+ED_LOGIN')
+field_name VARCHAR(50) Field that was changed -
+old_value TEXT Previous value -
+new_value TEXT New value -
+user_id INT User who performed action -
+user_type ENUM('Custom Type of user -
+er','Employee','S
+ystem')
+ip_address VARCHAR(45) IP address of user -
+user_agent VARCHAR(25 Browser/device info -
+5)
+session_id VARCHAR(10 Session identifier -
+0)
+timestamp DATETIME Time of action -
+affected_rows INT Number of rows affected -
+is_sensitive BOOLEAN Sensitive action flag -
+compliance_ca VARCHAR(50) Compliance category -
+tegory
+audit_notes TEXT Additional audit notes
+Table Name notifications
+Table Synonym NOT
+Table Comments Manages system notifications and alerts for customers and
+employees.
+Column Name Data Type Description Foreign Key
+notification_i INT Primary key - Unique PK
+d notification identifier
+customer_id INT Customer recipient FK →
+customers.customer_id
+employee_id INT Employee recipient FK →
+employees.employee_id
+branch_id INT Branch recipient FK →
+branches.branch_id
+notification_t ENUM('Alert','Warni Type of notification -
+ype ng','Information','Pro
+motion','Reminder','T
+ransaction
+Alert','Security
+Alert','Service
+Update')
+priority ENUM('Low','Mediu Priority level -
+m','High','Critical')
+subject VARCHAR(255) Notification subject -
+message TEXT Notification message -
+link_url VARCHAR(255) Link to related content -
+read_status BOOLEAN Read/unread status -
+read_timestam DATETIME Time notification was -
+p read
+dismissed BOOLEAN Dismissed flag -
+dismissed_tim DATETIME Time notification was -
+estamp dismissed
+sent_via_emai BOOLEAN Sent via email -
+l
+sent_via_sms BOOLEAN Sent via SMS -
+sent_via_push BOOLEAN Sent via push notification -
+sent_via_app BOOLEAN Sent via app -
+email_sent_st ENUM('Pending','Se Email delivery status -
+atus nt','Failed','Bounced')
+sms_sent_stat ENUM('Pending','Se SMS delivery status -
+us nt','Failed')
+push_sent_sta ENUM('Pending','Se Push delivery status -
+tus nt','Failed')
+scheduled_tim DATETIME Scheduled delivery time -
+e
+sent_time DATETIME Actual sent time -
+expiry_date DATETIME Notification expiry date -
+created_by INT User who created -
+notification
+creation_type ENUM('System','Ma How notification was -
+nual','Triggered') created
+trigger_event VARCHAR(50) Event that triggered -
+notification
+related_transa INT Related transaction FK →
+ction_id transactions.transaction_
+id
+related_accou INT Related account FK →
+nt_id accounts.account_id
+related_loan_i INT Related loan FK → loans.loan_id
+d
+additional_dat JSON Additional data in JSON -
+a format
+created_at TIMESTAMP Record creation -
+timestamp
+updated_at TIMESTAMP Record last update
+timestamp
