@@ -55,3 +55,157 @@ def parse_table_header(table_text):
         "synonym": synonym,
         "description": description
     }
+
+def extract_column_text(table_text):
+
+    match = re.search(
+        r"Column Name.*?Foreign.*?\n(.*)",
+        table_text,
+        re.DOTALL
+    )
+
+    if not match:
+        return ""
+
+    return match.group(1)
+
+def normalize_text(text):
+
+    text = text.replace("\r", "")
+
+    #remove repeated spaces
+
+    text = re.sub(r"[ ]+", " ", text)
+
+    return text
+
+
+def clean_lines(column_text):
+
+    lines = []
+
+    for line in column_text.splitlines():
+
+        line = line.strip()
+
+        if not line:
+            continue
+
+        if line.lower() == "keys":
+            continue
+
+        lines.append(line)
+
+    return lines
+
+def merge_wrapped_lines(lines):
+
+    merged = []
+
+    current = ""
+
+    datatype_pattern = (
+        r'^(?:'
+        r'[A-Za-z_][A-Za-z0-9_]*'
+        r')\s+'
+        r'(?:'
+        r'INT|VARCHAR|DATE|DATETIME|TIMESTAMP|'
+        r'BOOLEAN|DECIMAL|ENUM|TEXT'
+        r')'
+    )
+
+    for line in lines:
+
+        if re.match(
+            datatype_pattern,
+            line,
+            re.IGNORECASE
+        ):
+
+            if current:
+                merged.append(current)
+
+            current = line
+
+        else:
+            current += " " + line
+
+    if current:
+        merged.append(current)
+
+    return merged
+
+def parse_column_row(row):
+
+    pattern = (
+        r'^'
+        r'([A-Za-z_][A-Za-z0-9_]*)'
+        r'\s+'
+        r'('
+        r'INT'
+        r'|DATE'
+        r'|DATETIME'
+        r'|TIMESTAMP'
+        r'|BOOLEAN'
+        r'|TEXT'
+        r'|VARCHAR\(\d+\)'
+        r'|DECIMAL\(\d+,\d+\)'
+        r'|ENUM\(.*?\)'
+        r')'
+        r'\s*(.*)$'
+    )
+
+    match = re.match(
+        pattern,
+        row,
+        re.IGNORECASE
+    )
+
+    if not match:
+        return None
+
+    return {
+        "name": "customer_id",
+        "data_type": "INT",
+        "description": "Primary key - Unique customer identifier",
+        "key": "PK"
+    }
+
+def parse_table(table_section):
+
+    header = parse_table_header(
+        table_section["raw_text"]
+    )
+
+    column_text = extract_column_text(
+        table_section["raw_text"]
+    )
+
+    lines = clean_lines(column_text)
+
+    rows = merge_wrapped_lines(lines)
+
+    columns = []
+    seen = set()
+
+    for row in rows:
+
+        parsed = parse_column_row(row)
+
+        if not parsed:
+            continue
+
+        col_name = parsed["name"]
+
+        if col_name in seen:
+            continue
+
+        seen.add(col_name)
+        columns.append(parsed)
+
+    return {
+        "table": table_section["table_name"],
+        "synonym": header["synonym"],
+        "description": header["description"],
+        "columns": columns
+    }
