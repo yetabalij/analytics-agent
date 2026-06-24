@@ -1,6 +1,6 @@
 import pdfplumber
 
-def extract_pdf_tables(pdf_path):
+def extract_pdf_text(pdf_path):
 
     all_text = []
 

@@ -1,12 +1,12 @@
 import os
-from app.knowledge.pdf_parser import extract_pdf_tables
+from app.knowledge.pdf_parser import extract_pdf_text
 
 
 tests_dir = os.path.dirname(__file__)
 pdf_path = os.path.normpath(os.path.join(tests_dir, "..", "knowledge", "dictionary", "dictionary.pdf"))
 
 # extract all tables (full content)
-text = extract_pdf_tables(pdf_path)
+text = extract_pdf_text(pdf_path)
 
 # ensure metadata dir exists and write full raw output
 metadata_dir = os.path.normpath(os.path.join(tests_dir, "..", "knowledge", "metadata"))
