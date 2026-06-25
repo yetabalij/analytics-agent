@@ -1,0 +1,2987 @@
+[
+    {
+        "table": "accounts",
+        "synonym": "ACT",
+        "description": "Manages all bank accounts including checking, savings, and business accounts.",
+        "columns": [
+            {
+                "name": "account_id",
+                "data_type": "int",
+                "description": "Primary key - PK Unique account identifier"
+            },
+            {
+                "name": "account_name",
+                "data_type": "varchar",
+                "description": "Custom account - name"
+            },
+            {
+                "name": "account_number",
+                "data_type": "varchar",
+                "description": "Unique account - number"
+            },
+            {
+                "name": "account_subtype",
+                "data_type": "varchar",
+                "description": "Sub-category of - account type"
+            },
+            {
+                "name": "account_type",
+                "data_type": "enum",
+                "description": null
+            },
+            {
+                "name": "atm_card_issued",
+                "data_type": "tinyint",
+                "description": "ATM card issued - indicator"
+            },
+            {
+                "name": "atm_card_number",
+                "data_type": "varchar",
+                "description": "ATM card number -"
+            },
+            {
+                "name": "atm_pin_hash",
+                "data_type": "varchar",
+                "description": "Hashed ATM PIN -"
+            },
+            {
+                "name": "available_balance",
+                "data_type": "decimal",
+                "description": "Available funds for - withdrawal"
+            },
+            {
+                "name": "balance",
+                "data_type": "decimal",
+                "description": "Current account - balance"
+            },
+            {
+                "name": "checkbook_issued",
+                "data_type": "tinyint",
+                "description": "Checkbook issued - indicator"
+            },
+            {
+                "name": "closed_date",
+                "data_type": "date",
+                "description": "Account closing date - (if applicable)"
+            },
+            {
+                "name": "created_at",
+                "data_type": "timestamp",
+                "description": "Record creation - timestamp"
+            },
+            {
+                "name": "currency_code",
+                "data_type": "varchar",
+                "description": "Account currency - (default USD)"
+            },
+            {
+                "name": "customer_id",
+                "data_type": "int",
+                "description": "Reference to account FK \u2192 owner customers.custome r_id"
+            },
+            {
+                "name": "interest_rate",
+                "data_type": "decimal",
+                "description": "Annual interest rate -"
+            },
+            {
+                "name": "is_joint",
+                "data_type": "tinyint",
+                "description": "Joint account - indicator"
+            },
+            {
+                "name": "joint_owner1_id",
+                "data_type": "int",
+                "description": "First joint owner FK \u2192 reference customers.custome r_id"
+            },
+            {
+                "name": "joint_owner2_id",
+                "data_type": "int",
+                "description": "Second joint owner FK \u2192 reference customers.custome r_id"
+            },
+            {
+                "name": "joint_owner3_id",
+                "data_type": "int",
+                "description": "Third joint owner FK \u2192 reference customers.custome r_id"
+            },
+            {
+                "name": "last_transaction_date",
+                "data_type": "date",
+                "description": null
+            },
+            {
+                "name": "maturity_date",
+                "data_type": "date",
+                "description": "Maturity date for - CDs"
+            },
+            {
+                "name": "min_balance_required",
+                "data_type": "decimal",
+                "description": null
+            },
+            {
+                "name": "monthly_maintenance_fee",
+                "data_type": "decimal",
+                "description": null
+            },
+            {
+                "name": "notification_preferences",
+                "data_type": "text",
+                "description": null
+            },
+            {
+                "name": "opened_date",
+                "data_type": "date",
+                "description": "Account opening - date"
+            },
+            {
+                "name": "overdraft_limit",
+                "data_type": "decimal",
+                "description": "Maximum overdraft - allowed"
+            },
+            {
+                "name": "overdraft_protect",
+                "data_type": "tinyint",
+                "description": "Overdraft protection - enabled"
+            },
+            {
+                "name": "statement_cycle",
+                "data_type": "enum",
+                "description": null
+            },
+            {
+                "name": "statement_method",
+                "data_type": "enum",
+                "description": "method"
+            },
+            {
+                "name": "status",
+                "data_type": "enum",
+                "description": null
+            },
+            {
+                "name": "updated_at",
+                "data_type": "timestamp",
+                "description": "Record last update timestamp"
+            }
+        ]
+    },
+    {
+        "table": "atm_machines",
+        "synonym": "ATM",
+        "description": "Manages ATM machine inventory and status",
+        "columns": [
+            {
+                "name": "accessibility_features",
+                "data_type": "text",
+                "description": "Accessibility features -"
+            },
+            {
+                "name": "address_line1",
+                "data_type": "varchar",
+                "description": "ATM address line 1 -"
+            },
+            {
+                "name": "address_line2",
+                "data_type": "varchar",
+                "description": "ATM address line 2 -"
+            },
+            {
+                "name": "atm_code",
+                "data_type": "varchar",
+                "description": "Unique ATM code -"
+            },
+            {
+                "name": "atm_id",
+                "data_type": "int",
+                "description": "Primary key - Unique PK ATM identifier"
+            },
+            {
+                "name": "atm_location",
+                "data_type": "varchar",
+                "description": "ATM location - description"
+            },
+            {
+                "name": "atm_type",
+                "data_type": "enum",
+                "description": null
+            },
+            {
+                "name": "branch_id",
+                "data_type": "int",
+                "description": "Associated branch FK \u2192 branches.branch_i d"
+            },
+            {
+                "name": "cash_capacity",
+                "data_type": "decimal",
+                "description": "Maximum cash - capacity"
+            },
+            {
+                "name": "city",
+                "data_type": "varchar",
+                "description": "ATM city -"
+            },
+            {
+                "name": "created_at",
+                "data_type": "timestamp",
+                "description": "Record creation - timestamp"
+            },
+            {
+                "name": "currency_denominations",
+                "data_type": "text",
+                "description": "Available - denominations"
+            },
+            {
+                "name": "current_cash_level",
+                "data_type": "decimal",
+                "description": "Current cash on hand -"
+            },
+            {
+                "name": "has_cardless_capability",
+                "data_type": "tinyint",
+                "description": "Cardless access -"
+            },
+            {
+                "name": "has_check_capability",
+                "data_type": "tinyint",
+                "description": "Check deposit - capability"
+            },
+            {
+                "name": "has_deposit_capability",
+                "data_type": "tinyint",
+                "description": "Deposit capability -"
+            },
+            {
+                "name": "has_envelope_free",
+                "data_type": "tinyint",
+                "description": "Envelope-free - deposit"
+            },
+            {
+                "name": "has_nfc_capability",
+                "data_type": "tinyint",
+                "description": "NFC capability -"
+            },
+            {
+                "name": "installed_date",
+                "data_type": "date",
+                "description": "Installation date -"
+            },
+            {
+                "name": "last_maintenance_date",
+                "data_type": "date",
+                "description": "Last maintenance - date"
+            },
+            {
+                "name": "latitude",
+                "data_type": "decimal",
+                "description": "Geographic latitude -"
+            },
+            {
+                "name": "longitude",
+                "data_type": "decimal",
+                "description": "Geographic longitude -"
+            },
+            {
+                "name": "manufacturer",
+                "data_type": "varchar",
+                "description": "ATM manufacturer -"
+            },
+            {
+                "name": "model",
+                "data_type": "varchar",
+                "description": "ATM model number -"
+            },
+            {
+                "name": "next_maintenance_date",
+                "data_type": "date",
+                "description": "Next scheduled - maintenance"
+            },
+            {
+                "name": "notes",
+                "data_type": "text",
+                "description": "Additional notes -"
+            },
+            {
+                "name": "screen_size",
+                "data_type": "varchar",
+                "description": "Screen size - description"
+            },
+            {
+                "name": "serial_number",
+                "data_type": "varchar",
+                "description": "ATM serial number -"
+            },
+            {
+                "name": "software_version",
+                "data_type": "varchar",
+                "description": "ATM software - version"
+            },
+            {
+                "name": "state",
+                "data_type": "varchar",
+                "description": "ATM state -"
+            },
+            {
+                "name": "status",
+                "data_type": "enum",
+                "description": null
+            },
+            {
+                "name": "transaction_count_monthly",
+                "data_type": "int",
+                "description": null
+            },
+            {
+                "name": "transaction_count_today",
+                "data_type": "int",
+                "description": "Today's transaction - count"
+            },
+            {
+                "name": "updated_at",
+                "data_type": "timestamp",
+                "description": "Record last update - timestamp"
+            },
+            {
+                "name": "zip_code",
+                "data_type": "varchar",
+                "description": "ATM ZIP code -"
+            }
+        ]
+    },
+    {
+        "table": "atm_transactions",
+        "synonym": "ATT",
+        "description": "Records ATM transaction details and processing",
+        "columns": [
+            {
+                "name": "atm_card_number",
+                "data_type": "varchar",
+                "description": "Card number - used"
+            },
+            {
+                "name": "atm_id",
+                "data_type": "int",
+                "description": "ATM FK \u2192 machine atm_machines.atm_id reference"
+            },
+            {
+                "name": "atm_transaction_id",
+                "data_type": "int",
+                "description": "Primary key PK - Unique identifier"
+            },
+            {
+                "name": "card_present",
+                "data_type": "tinyint",
+                "description": "Physical - card present"
+            },
+            {
+                "name": "completion_time",
+                "data_type": "datetime",
+                "description": "TIME Transaction - completion time"
+            },
+            {
+                "name": "customer_id",
+                "data_type": "int",
+                "description": "Customer FK \u2192 performing customers.customer_id transaction"
+            },
+            {
+                "name": "entry_mode",
+                "data_type": "varchar",
+                "description": "Card entry - method"
+            },
+            {
+                "name": "error_code",
+                "data_type": "varchar",
+                "description": "Error code if - any"
+            },
+            {
+                "name": "error_description",
+                "data_type": "text",
+                "description": "Error description"
+            },
+            {
+                "name": "processing_time",
+                "data_type": "decimal",
+                "description": "Processing - time in seconds"
+            },
+            {
+                "name": "response_code",
+                "data_type": "varchar",
+                "description": "Response - code from ATM"
+            },
+            {
+                "name": "response_message",
+                "data_type": "varchar",
+                "description": "Response - message"
+            },
+            {
+                "name": "start_time",
+                "data_type": "datetime",
+                "description": "TIME Transaction - start time"
+            },
+            {
+                "name": "terminal_id",
+                "data_type": "varchar",
+                "description": "Terminal - identifier"
+            },
+            {
+                "name": "transaction_id",
+                "data_type": "int",
+                "description": "Associated FK \u2192 transaction transactions.transaction_id"
+            },
+            {
+                "name": "transaction_sequence_number",
+                "data_type": "int",
+                "description": "Sequence - number"
+            }
+        ]
+    },
+    {
+        "table": "audit_logs",
+        "synonym": "ADL",
+        "description": "Tracks all system changes for compliance and security",
+        "columns": [
+            {
+                "name": "action",
+                "data_type": "enum",
+                "description": null
+            },
+            {
+                "name": "affected_rows",
+                "data_type": "int",
+                "description": "Number of rows affected -"
+            },
+            {
+                "name": "audit_id",
+                "data_type": "int",
+                "description": "Primary key - Unique audit identifier PK"
+            },
+            {
+                "name": "audit_notes",
+                "data_type": "text",
+                "description": "Additional audit notes"
+            },
+            {
+                "name": "compliance_category",
+                "data_type": "varchar",
+                "description": null
+            },
+            {
+                "name": "field_name",
+                "data_type": "varchar",
+                "description": "Field that was changed -"
+            },
+            {
+                "name": "ip_address",
+                "data_type": "varchar",
+                "description": "IP address of user -"
+            },
+            {
+                "name": "is_sensitive",
+                "data_type": "tinyint",
+                "description": "Sensitive action flag -"
+            },
+            {
+                "name": "new_value",
+                "data_type": "text",
+                "description": "New value -"
+            },
+            {
+                "name": "old_value",
+                "data_type": "text",
+                "description": "Previous value -"
+            },
+            {
+                "name": "record_id",
+                "data_type": "int",
+                "description": "ID of the record changed -"
+            },
+            {
+                "name": "session_id",
+                "data_type": "varchar",
+                "description": null
+            },
+            {
+                "name": "table_name",
+                "data_type": "varchar",
+                "description": "Table that was changed -"
+            },
+            {
+                "name": "timestamp",
+                "data_type": "datetime",
+                "description": "TIME Time of action -"
+            },
+            {
+                "name": "user_agent",
+                "data_type": "varchar",
+                "description": null
+            },
+            {
+                "name": "user_id",
+                "data_type": "int",
+                "description": "User who performed action -"
+            },
+            {
+                "name": "user_type",
+                "data_type": "enum",
+                "description": null
+            }
+        ]
+    },
+    {
+        "table": "bill_payments",
+        "synonym": "BLP",
+        "description": "Manages bill payments made by customers",
+        "columns": [
+            {
+                "name": "account_id",
+                "data_type": "int",
+                "description": "Account used for payment FK \u2192 accounts.accoun t_id"
+            },
+            {
+                "name": "amount",
+                "data_type": "decimal",
+                "description": "Payment amount -"
+            },
+            {
+                "name": "bill_category",
+                "data_type": "enum",
+                "description": null
+            },
+            {
+                "name": "bill_payment_id",
+                "data_type": "int",
+                "description": null
+            },
+            {
+                "name": "bill_subcategory",
+                "data_type": "varchar",
+                "description": null
+            },
+            {
+                "name": "confirmation_number",
+                "data_type": "varchar",
+                "description": null
+            },
+            {
+                "name": "created_at",
+                "data_type": "timestamp",
+                "description": "Record creation timestamp -"
+            },
+            {
+                "name": "customer_id",
+                "data_type": "int",
+                "description": "Customer making payment FK \u2192 customers.custo mer_id"
+            },
+            {
+                "name": "due_date",
+                "data_type": "date",
+                "description": "Bill due date -"
+            },
+            {
+                "name": "failure_reason",
+                "data_type": "varchar",
+                "description": "Reason for failure if any -"
+            },
+            {
+                "name": "is_auto_pay",
+                "data_type": "tinyint",
+                "description": "Auto-pay enabled flag -"
+            },
+            {
+                "name": "is_recurring",
+                "data_type": "tinyint",
+                "description": "Recurring payment flag -"
+            },
+            {
+                "name": "next_scheduled_date",
+                "data_type": "date",
+                "description": null
+            },
+            {
+                "name": "notes",
+                "data_type": "text",
+                "description": "Additional notes -"
+            },
+            {
+                "name": "payee_account_number",
+                "data_type": "varchar",
+                "description": null
+            },
+            {
+                "name": "payee_address",
+                "data_type": "varchar",
+                "description": "Payee address -"
+            },
+            {
+                "name": "payee_city",
+                "data_type": "varchar",
+                "description": "Payee city -"
+            },
+            {
+                "name": "payee_name",
+                "data_type": "varchar",
+                "description": "Payee/recipient name -"
+            },
+            {
+                "name": "payee_routing_number",
+                "data_type": "varchar",
+                "description": null
+            },
+            {
+                "name": "payee_state",
+                "data_type": "varchar",
+                "description": "Payee state -"
+            },
+            {
+                "name": "payee_zip",
+                "data_type": "varchar",
+                "description": "Payee ZIP code -"
+            },
+            {
+                "name": "payment_date",
+                "data_type": "date",
+                "description": "Date payment was made -"
+            },
+            {
+                "name": "payment_status",
+                "data_type": "enum",
+                "description": null
+            },
+            {
+                "name": "processing_fee",
+                "data_type": "decimal",
+                "description": "Processing fee -"
+            },
+            {
+                "name": "recurrence_frequency",
+                "data_type": "varchar",
+                "description": null
+            },
+            {
+                "name": "schedule_type",
+                "data_type": "enum",
+                "description": null
+            },
+            {
+                "name": "transaction_id",
+                "data_type": "int",
+                "description": "Associated transaction FK \u2192 transactions.tran saction_id"
+            },
+            {
+                "name": "updated_at",
+                "data_type": "timestamp",
+                "description": "Record last update timestamp"
+            }
+        ]
+    },
+    {
+        "table": "branches",
+        "synonym": "BRC",
+        "description": "Contains information about all branch locations",
+        "columns": [
+            {
+                "name": "address_line1",
+                "data_type": "varchar",
+                "description": "Branch address line 1 -"
+            },
+            {
+                "name": "address_line2",
+                "data_type": "varchar",
+                "description": "Branch address line 2 -"
+            },
+            {
+                "name": "branch_code",
+                "data_type": "varchar",
+                "description": "Unique branch code -"
+            },
+            {
+                "name": "branch_id",
+                "data_type": "int",
+                "description": "Primary key - Unique PK branch identifier"
+            },
+            {
+                "name": "branch_name",
+                "data_type": "varchar",
+                "description": "Full branch name -"
+            },
+            {
+                "name": "branch_type",
+                "data_type": "enum",
+                "description": null
+            },
+            {
+                "name": "city",
+                "data_type": "varchar",
+                "description": "Branch city -"
+            },
+            {
+                "name": "country",
+                "data_type": "varchar",
+                "description": "Branch country -"
+            },
+            {
+                "name": "created_at",
+                "data_type": "timestamp",
+                "description": "Record creation - timestamp"
+            },
+            {
+                "name": "email",
+                "data_type": "varchar",
+                "description": "Branch email address -"
+            },
+            {
+                "name": "establishment_date",
+                "data_type": "date",
+                "description": "Branch opening date -"
+            },
+            {
+                "name": "fax_number",
+                "data_type": "varchar",
+                "description": "Branch fax number -"
+            },
+            {
+                "name": "has_drive_thru",
+                "data_type": "tinyint",
+                "description": "Drive-through service - available"
+            },
+            {
+                "name": "has_parking",
+                "data_type": "tinyint",
+                "description": "Parking available -"
+            },
+            {
+                "name": "has_safe_deposit",
+                "data_type": "tinyint",
+                "description": "Safe deposit boxes - available"
+            },
+            {
+                "name": "has_wheelchair_access",
+                "data_type": "tinyint",
+                "description": "Wheelchair accessible -"
+            },
+            {
+                "name": "holiday_hours",
+                "data_type": "text",
+                "description": "Holiday hours -"
+            },
+            {
+                "name": "is_active",
+                "data_type": "tinyint",
+                "description": "Branch active status -"
+            },
+            {
+                "name": "manager_id",
+                "data_type": "int",
+                "description": "Branch manager - employee ID"
+            },
+            {
+                "name": "manager_name",
+                "data_type": "varchar",
+                "description": "Branch manager name -"
+            },
+            {
+                "name": "notes",
+                "data_type": "text",
+                "description": "Additional branch notes -"
+            },
+            {
+                "name": "number_of_atms",
+                "data_type": "int",
+                "description": "Number of ATMs at - branch"
+            },
+            {
+                "name": "number_of_tellers",
+                "data_type": "int",
+                "description": "Number of teller - stations"
+            },
+            {
+                "name": "operating_hours",
+                "data_type": "varchar",
+                "description": "Regular operating hours -"
+            },
+            {
+                "name": "phone_number",
+                "data_type": "varchar",
+                "description": "Branch phone number -"
+            },
+            {
+                "name": "region",
+                "data_type": "varchar",
+                "description": "Geographic region -"
+            },
+            {
+                "name": "square_footage",
+                "data_type": "int",
+                "description": "Building size in sq ft -"
+            },
+            {
+                "name": "state",
+                "data_type": "varchar",
+                "description": "Branch state -"
+            },
+            {
+                "name": "timezone",
+                "data_type": "varchar",
+                "description": "Time zone -"
+            },
+            {
+                "name": "updated_at",
+                "data_type": "timestamp",
+                "description": "Record last update - timestamp"
+            },
+            {
+                "name": "weekend_hours",
+                "data_type": "varchar",
+                "description": "Weekend operating - hours"
+            },
+            {
+                "name": "zip_code",
+                "data_type": "varchar",
+                "description": "Branch ZIP code -"
+            }
+        ]
+    },
+    {
+        "table": "card_transactions",
+        "synonym": "CTR",
+        "description": "Details of transactions made using credit cards",
+        "columns": [
+            {
+                "name": "authorization_code",
+                "data_type": "varchar",
+                "description": "Transaction - authorizatio n code"
+            },
+            {
+                "name": "card_id",
+                "data_type": "int",
+                "description": "Card used FK \u2192 for credit_cards.card_id transaction"
+            },
+            {
+                "name": "card_present",
+                "data_type": "tinyint",
+                "description": "Physical - card present"
+            },
+            {
+                "name": "card_transaction_id",
+                "data_type": "int",
+                "description": "Primary key PK - Unique identifier"
+            },
+            {
+                "name": "cashback_amount",
+                "data_type": "decimal",
+                "description": "Cashback - earned"
+            },
+            {
+                "name": "chip_used",
+                "data_type": "tinyint",
+                "description": "EMV chip - used"
+            },
+            {
+                "name": "merchant_category_code",
+                "data_type": "varchar",
+                "description": null
+            },
+            {
+                "name": "merchant_city",
+                "data_type": "varchar",
+                "description": "Merchant - city"
+            },
+            {
+                "name": "merchant_country",
+                "data_type": "varchar",
+                "description": "Merchant - country"
+            },
+            {
+                "name": "merchant_id",
+                "data_type": "varchar",
+                "description": "Merchant - identifier"
+            },
+            {
+                "name": "merchant_name",
+                "data_type": "varchar",
+                "description": "Merchant - name"
+            },
+            {
+                "name": "merchant_state",
+                "data_type": "varchar",
+                "description": "Merchant - state"
+            },
+            {
+                "name": "pin_verified",
+                "data_type": "tinyint",
+                "description": "PIN verified -"
+            },
+            {
+                "name": "pos_entry_mode",
+                "data_type": "varchar",
+                "description": "POS entry - method"
+            },
+            {
+                "name": "purchase_amount",
+                "data_type": "decimal",
+                "description": "Amount of - purchase"
+            },
+            {
+                "name": "reward_points_earned",
+                "data_type": "int",
+                "description": "Points - earned from transaction"
+            },
+            {
+                "name": "signature_required",
+                "data_type": "tinyint",
+                "description": "Signature required"
+            },
+            {
+                "name": "transaction_id",
+                "data_type": "int",
+                "description": "Associated FK \u2192 transaction transactions.transaction_i d"
+            },
+            {
+                "name": "transaction_type",
+                "data_type": "enum",
+                "description": null
+            }
+        ]
+    },
+    {
+        "table": "credit_cards",
+        "synonym": null,
+        "description": null,
+        "columns": [
+            {
+                "name": "account_id",
+                "data_type": "int",
+                "description": null
+            },
+            {
+                "name": "annual_fee",
+                "data_type": "decimal",
+                "description": null
+            },
+            {
+                "name": "apr_balance_transfer",
+                "data_type": "decimal",
+                "description": null
+            },
+            {
+                "name": "apr_cash_advance",
+                "data_type": "decimal",
+                "description": null
+            },
+            {
+                "name": "apr_purchase",
+                "data_type": "decimal",
+                "description": null
+            },
+            {
+                "name": "available_credit",
+                "data_type": "decimal",
+                "description": null
+            },
+            {
+                "name": "cancelled_date",
+                "data_type": "date",
+                "description": null
+            },
+            {
+                "name": "card_holder_name",
+                "data_type": "varchar",
+                "description": null
+            },
+            {
+                "name": "card_id",
+                "data_type": "int",
+                "description": null
+            },
+            {
+                "name": "card_level",
+                "data_type": "enum",
+                "description": null
+            },
+            {
+                "name": "card_number",
+                "data_type": "varchar",
+                "description": null
+            },
+            {
+                "name": "card_type",
+                "data_type": "enum",
+                "description": null
+            },
+            {
+                "name": "cash_advance_fee",
+                "data_type": "decimal",
+                "description": null
+            },
+            {
+                "name": "cashback_percentage",
+                "data_type": "decimal",
+                "description": null
+            },
+            {
+                "name": "credit_limit",
+                "data_type": "decimal",
+                "description": null
+            },
+            {
+                "name": "credit_score_at_issue",
+                "data_type": "int",
+                "description": null
+            },
+            {
+                "name": "current_balance",
+                "data_type": "decimal",
+                "description": null
+            },
+            {
+                "name": "customer_id",
+                "data_type": "int",
+                "description": null
+            },
+            {
+                "name": "cvv_hash",
+                "data_type": "varchar",
+                "description": null
+            },
+            {
+                "name": "expiry_date",
+                "data_type": "date",
+                "description": null
+            },
+            {
+                "name": "foreign_transaction_fee",
+                "data_type": "decimal",
+                "description": null
+            },
+            {
+                "name": "fraud_alerts_enabled",
+                "data_type": "tinyint",
+                "description": null
+            },
+            {
+                "name": "is_chip_enabled",
+                "data_type": "tinyint",
+                "description": null
+            },
+            {
+                "name": "is_contactless",
+                "data_type": "tinyint",
+                "description": null
+            },
+            {
+                "name": "issued_date",
+                "data_type": "date",
+                "description": null
+            },
+            {
+                "name": "last_activity_date",
+                "data_type": "date",
+                "description": null
+            },
+            {
+                "name": "late_payment_fee",
+                "data_type": "decimal",
+                "description": null
+            },
+            {
+                "name": "minimum_payment",
+                "data_type": "decimal",
+                "description": null
+            },
+            {
+                "name": "monthly_statement_enabled",
+                "data_type": "tinyint",
+                "description": null
+            },
+            {
+                "name": "payment_due_days",
+                "data_type": "int",
+                "description": null
+            },
+            {
+                "name": "pin_set",
+                "data_type": "tinyint",
+                "description": null
+            },
+            {
+                "name": "reward_points_balance",
+                "data_type": "int",
+                "description": null
+            },
+            {
+                "name": "reward_program",
+                "data_type": "varchar",
+                "description": null
+            },
+            {
+                "name": "statement_cycle_day",
+                "data_type": "int",
+                "description": null
+            },
+            {
+                "name": "status",
+                "data_type": "enum",
+                "description": null
+            }
+        ]
+    },
+    {
+        "table": "customers",
+        "synonym": "CTB",
+        "description": "Stores personal and demographic information of all bank customers",
+        "columns": [
+            {
+                "name": "address_line1",
+                "data_type": "varchar",
+                "description": "Primary address line 1"
+            },
+            {
+                "name": "address_line2",
+                "data_type": "varchar",
+                "description": "Primary address line 2"
+            },
+            {
+                "name": "alternate_phone",
+                "data_type": "varchar",
+                "description": "Secondary phone number"
+            },
+            {
+                "name": "annual_income",
+                "data_type": "decimal",
+                "description": "Annual income in USD"
+            },
+            {
+                "name": "city",
+                "data_type": "varchar",
+                "description": "City of residence"
+            },
+            {
+                "name": "country",
+                "data_type": "varchar",
+                "description": "Country of residence"
+            },
+            {
+                "name": "created_at",
+                "data_type": "timestamp",
+                "description": "Record creation timestamp"
+            },
+            {
+                "name": "credit_score",
+                "data_type": "int",
+                "description": "Credit score (300-850)"
+            },
+            {
+                "name": "customer_id",
+                "data_type": "int",
+                "description": "Primary key - Unique customer PK identifier"
+            },
+            {
+                "name": "customer_since",
+                "data_type": "date",
+                "description": "Date customer joined"
+            },
+            {
+                "name": "date_of_birth",
+                "data_type": "date",
+                "description": "Customer's date of birth"
+            },
+            {
+                "name": "email",
+                "data_type": "varchar",
+                "description": "Customer's email address"
+            },
+            {
+                "name": "employer",
+                "data_type": "varchar",
+                "description": "Current employer name"
+            },
+            {
+                "name": "first_name",
+                "data_type": "varchar",
+                "description": "Customer's first name"
+            },
+            {
+                "name": "gender",
+                "data_type": "enum",
+                "description": "Customer's gender"
+            },
+            {
+                "name": "id_expiry_date",
+                "data_type": "date",
+                "description": "ID document expiry date"
+            },
+            {
+                "name": "id_issue_date",
+                "data_type": "date",
+                "description": "ID document issue date"
+            },
+            {
+                "name": "id_number",
+                "data_type": "varchar",
+                "description": "Identification document number"
+            },
+            {
+                "name": "id_type",
+                "data_type": "varchar",
+                "description": "Identification document type"
+            },
+            {
+                "name": "is_verified",
+                "data_type": "tinyint",
+                "description": "Identity verification status"
+            },
+            {
+                "name": "last_name",
+                "data_type": "varchar",
+                "description": "Customer's last name"
+            },
+            {
+                "name": "middle_name",
+                "data_type": "varchar",
+                "description": "Customer's middle name"
+            },
+            {
+                "name": "nationality",
+                "data_type": "varchar",
+                "description": "Customer's nationality"
+            },
+            {
+                "name": "occupation",
+                "data_type": "varchar",
+                "description": "Current occupation"
+            },
+            {
+                "name": "phone_number",
+                "data_type": "varchar",
+                "description": "Primary phone number"
+            },
+            {
+                "name": "risk_level",
+                "data_type": "enum",
+                "description": null
+            },
+            {
+                "name": "ssn",
+                "data_type": "varchar",
+                "description": "Social Security Number (unique)"
+            },
+            {
+                "name": "state",
+                "data_type": "varchar",
+                "description": "State of residence"
+            },
+            {
+                "name": "status",
+                "data_type": "enum",
+                "description": null
+            },
+            {
+                "name": "updated_at",
+                "data_type": "timestamp",
+                "description": "Record last update timestamp"
+            },
+            {
+                "name": "zip_code",
+                "data_type": "varchar",
+                "description": "ZIP/Postal code"
+            }
+        ]
+    },
+    {
+        "table": "employees",
+        "synonym": null,
+        "description": null,
+        "columns": [
+            {
+                "name": "address_line1",
+                "data_type": "varchar",
+                "description": null
+            },
+            {
+                "name": "address_line2",
+                "data_type": "varchar",
+                "description": null
+            },
+            {
+                "name": "benefits_package",
+                "data_type": "varchar",
+                "description": null
+            },
+            {
+                "name": "bonus_percentage",
+                "data_type": "decimal",
+                "description": null
+            },
+            {
+                "name": "branch_id",
+                "data_type": "int",
+                "description": null
+            },
+            {
+                "name": "certifications",
+                "data_type": "text",
+                "description": null
+            },
+            {
+                "name": "city",
+                "data_type": "varchar",
+                "description": null
+            },
+            {
+                "name": "country",
+                "data_type": "varchar",
+                "description": null
+            },
+            {
+                "name": "created_at",
+                "data_type": "timestamp",
+                "description": null
+            },
+            {
+                "name": "date_of_birth",
+                "data_type": "date",
+                "description": null
+            },
+            {
+                "name": "department",
+                "data_type": "varchar",
+                "description": null
+            },
+            {
+                "name": "email",
+                "data_type": "varchar",
+                "description": null
+            },
+            {
+                "name": "emergency_contact_name",
+                "data_type": "varchar",
+                "description": null
+            },
+            {
+                "name": "emergency_contact_phone",
+                "data_type": "varchar",
+                "description": null
+            },
+            {
+                "name": "employee_id",
+                "data_type": "int",
+                "description": null
+            },
+            {
+                "name": "employee_number",
+                "data_type": "varchar",
+                "description": null
+            },
+            {
+                "name": "first_name",
+                "data_type": "varchar",
+                "description": null
+            },
+            {
+                "name": "hire_date",
+                "data_type": "date",
+                "description": null
+            },
+            {
+                "name": "is_active",
+                "data_type": "tinyint",
+                "description": null
+            },
+            {
+                "name": "last_name",
+                "data_type": "varchar",
+                "description": null
+            },
+            {
+                "name": "last_performance_review",
+                "data_type": "date",
+                "description": null
+            },
+            {
+                "name": "middle_name",
+                "data_type": "varchar",
+                "description": null
+            },
+            {
+                "name": "performance_rating",
+                "data_type": "enum",
+                "description": null
+            },
+            {
+                "name": "phone_number",
+                "data_type": "varchar",
+                "description": null
+            },
+            {
+                "name": "position",
+                "data_type": "varchar",
+                "description": null
+            },
+            {
+                "name": "role",
+                "data_type": "enum",
+                "description": null
+            },
+            {
+                "name": "salary",
+                "data_type": "decimal",
+                "description": null
+            },
+            {
+                "name": "security_clearance_level",
+                "data_type": "int",
+                "description": null
+            },
+            {
+                "name": "sick_days_accrued",
+                "data_type": "int",
+                "description": null
+            },
+            {
+                "name": "ssn",
+                "data_type": "varchar",
+                "description": null
+            },
+            {
+                "name": "state",
+                "data_type": "varchar",
+                "description": null
+            },
+            {
+                "name": "supervisor_id",
+                "data_type": "int",
+                "description": null
+            },
+            {
+                "name": "termination_date",
+                "data_type": "date",
+                "description": null
+            },
+            {
+                "name": "title",
+                "data_type": "varchar",
+                "description": null
+            },
+            {
+                "name": "training_completed",
+                "data_type": "text",
+                "description": null
+            },
+            {
+                "name": "updated_at",
+                "data_type": "timestamp",
+                "description": null
+            },
+            {
+                "name": "vacation_days_accrued",
+                "data_type": "int",
+                "description": null
+            },
+            {
+                "name": "zip_code",
+                "data_type": "varchar",
+                "description": null
+            }
+        ]
+    },
+    {
+        "table": "holdings",
+        "synonym": "HLD",
+        "description": "Tracks securities held in investment accounts",
+        "columns": [
+            {
+                "name": "average_cost",
+                "data_type": "decimal",
+                "description": null
+            },
+            {
+                "name": "cost_basis",
+                "data_type": "decimal",
+                "description": null
+            },
+            {
+                "name": "current_value",
+                "data_type": "decimal",
+                "description": null
+            },
+            {
+                "name": "dividend_reinvest",
+                "data_type": "tinyint",
+                "description": "Dividend reinvestment flag -"
+            },
+            {
+                "name": "gain_loss",
+                "data_type": "decimal",
+                "description": null
+            },
+            {
+                "name": "gain_loss_percentage",
+                "data_type": "decimal",
+                "description": null
+            },
+            {
+                "name": "holding_id",
+                "data_type": "int",
+                "description": "Primary key - Unique holding PK identifier"
+            },
+            {
+                "name": "holding_type",
+                "data_type": "enum",
+                "description": null
+            },
+            {
+                "name": "investment_id",
+                "data_type": "int",
+                "description": "Investment account reference FK \u2192 investment_account s.investment_id"
+            },
+            {
+                "name": "last_sale_date",
+                "data_type": "date",
+                "description": "Last sale date -"
+            },
+            {
+                "name": "last_sale_price",
+                "data_type": "decimal",
+                "description": null
+            },
+            {
+                "name": "notes",
+                "data_type": "text",
+                "description": "Additional notes"
+            },
+            {
+                "name": "purchase_date",
+                "data_type": "date",
+                "description": "Date of purchase -"
+            },
+            {
+                "name": "purchase_price",
+                "data_type": "decimal",
+                "description": null
+            },
+            {
+                "name": "quantity",
+                "data_type": "decimal",
+                "description": null
+            },
+            {
+                "name": "security_id",
+                "data_type": "int",
+                "description": "Security held FK \u2192 securities.security_i d"
+            },
+            {
+                "name": "status",
+                "data_type": "enum",
+                "description": null
+            },
+            {
+                "name": "tax_lot_number",
+                "data_type": "varchar",
+                "description": "Tax lot identifier -"
+            }
+        ]
+    },
+    {
+        "table": "investment_accounts",
+        "synonym": "IVA",
+        "description": "Manages investment accounts including brokerage, IRA, and retirement accounts",
+        "columns": [
+            {
+                "name": "account_id",
+                "data_type": "int",
+                "description": "Associated bank account FK \u2192 accounts.accoun t_id"
+            },
+            {
+                "name": "account_number",
+                "data_type": "varchar",
+                "description": "Unique investment account - number"
+            },
+            {
+                "name": "account_type",
+                "data_type": "enum",
+                "description": "','Pension ','529 Plan','Trust','Mutual Fund','Annuity')"
+            },
+            {
+                "name": "advisor_contact",
+                "data_type": "varchar",
+                "description": "Advisor contact information -"
+            },
+            {
+                "name": "annual_return_percentage",
+                "data_type": "decimal",
+                "description": null
+            },
+            {
+                "name": "beneficiary_name",
+                "data_type": "varchar",
+                "description": "Beneficiary name -"
+            },
+            {
+                "name": "beneficiary_relationship",
+                "data_type": "varchar",
+                "description": null
+            },
+            {
+                "name": "beneficiary_ssn",
+                "data_type": "varchar",
+                "description": "Beneficiary SSN -"
+            },
+            {
+                "name": "cash_balance",
+                "data_type": "decimal",
+                "description": "Cash held in account -"
+            },
+            {
+                "name": "closed_date",
+                "data_type": "date",
+                "description": "Account closing date -"
+            },
+            {
+                "name": "customer_id",
+                "data_type": "int",
+                "description": "Account holder reference FK \u2192 customers.custo mer_id"
+            },
+            {
+                "name": "investment_advisor",
+                "data_type": "varchar",
+                "description": null
+            },
+            {
+                "name": "investment_id",
+                "data_type": "int",
+                "description": "Primary key - Unique PK investment identifier"
+            },
+            {
+                "name": "investment_objective",
+                "data_type": "varchar",
+                "description": null
+            },
+            {
+                "name": "is_taxable",
+                "data_type": "tinyint",
+                "description": "Taxable account flag -"
+            },
+            {
+                "name": "last_performance_date",
+                "data_type": "date",
+                "description": null
+            },
+            {
+                "name": "margin_balance",
+                "data_type": "decimal",
+                "description": "Margin loan balance -"
+            },
+            {
+                "name": "margin_interest_rate",
+                "data_type": "decimal",
+                "description": null
+            },
+            {
+                "name": "opened_date",
+                "data_type": "date",
+                "description": "Account opening date -"
+            },
+            {
+                "name": "risk_tolerance",
+                "data_type": "enum",
+                "description": null
+            },
+            {
+                "name": "status",
+                "data_type": "enum",
+                "description": null
+            },
+            {
+                "name": "tax_bracket",
+                "data_type": "decimal",
+                "description": "Tax bracket percentage -"
+            },
+            {
+                "name": "time_horizon",
+                "data_type": "varchar",
+                "description": "Investment time frame -"
+            },
+            {
+                "name": "total_cost_basis",
+                "data_type": "decimal",
+                "description": "Total cost of investments -"
+            },
+            {
+                "name": "total_gain_loss",
+                "data_type": "decimal",
+                "description": "Total unrealized gain/loss -"
+            },
+            {
+                "name": "total_value",
+                "data_type": "decimal",
+                "description": "Total portfolio value -"
+            },
+            {
+                "name": "trust_contact",
+                "data_type": "varchar",
+                "description": "Trust contact info -"
+            },
+            {
+                "name": "trust_name",
+                "data_type": "varchar",
+                "description": "Trust name (if applicable) -"
+            }
+        ]
+    },
+    {
+        "table": "loan_payments",
+        "synonym": "LONP",
+        "description": "Tracks all payments made towards loans",
+        "columns": [
+            {
+                "name": "amount",
+                "data_type": "decimal",
+                "description": "Total payment amount -"
+            },
+            {
+                "name": "auto_payment_id",
+                "data_type": "int",
+                "description": "Auto-payment setup ID -"
+            },
+            {
+                "name": "created_at",
+                "data_type": "timestamp",
+                "description": "Record creation timestamp"
+            },
+            {
+                "name": "days_late",
+                "data_type": "int",
+                "description": "Days payment was late -"
+            },
+            {
+                "name": "fee_paid",
+                "data_type": "decimal",
+                "description": "Fees paid -"
+            },
+            {
+                "name": "interest_paid",
+                "data_type": "decimal",
+                "description": "Portion applied to interest -"
+            },
+            {
+                "name": "is_auto_payment",
+                "data_type": "tinyint",
+                "description": "Auto-debit payment flag -"
+            },
+            {
+                "name": "late_charge_paid",
+                "data_type": "decimal",
+                "description": "Late fees paid -"
+            },
+            {
+                "name": "loan_id",
+                "data_type": "int",
+                "description": "Loan being paid FK \u2192 loans.loan_id"
+            },
+            {
+                "name": "notes",
+                "data_type": "text",
+                "description": "Additional payment notes -"
+            },
+            {
+                "name": "payment_date",
+                "data_type": "date",
+                "description": "Date of payment -"
+            },
+            {
+                "name": "payment_id",
+                "data_type": "int",
+                "description": "Primary key - Unique PK payment identifier"
+            },
+            {
+                "name": "payment_method",
+                "data_type": "enum",
+                "description": null
+            },
+            {
+                "name": "payment_reference",
+                "data_type": "varchar",
+                "description": null
+            },
+            {
+                "name": "payment_status",
+                "data_type": "enum",
+                "description": null
+            },
+            {
+                "name": "principal_paid",
+                "data_type": "decimal",
+                "description": "Portion applied to - principal"
+            },
+            {
+                "name": "receipt_number",
+                "data_type": "varchar",
+                "description": "Payment receipt number -"
+            },
+            {
+                "name": "remaining_balance",
+                "data_type": "decimal",
+                "description": null
+            },
+            {
+                "name": "transaction_id",
+                "data_type": "int",
+                "description": "Associated transaction FK \u2192 transactions.transactio n_id"
+            }
+        ]
+    },
+    {
+        "table": "loans",
+        "synonym": "LON",
+        "description": "Manages all loan products including personal, auto, mortgage, and business loans.",
+        "columns": [
+            {
+                "name": "account_id",
+                "data_type": "int",
+                "description": "Associated account for FK \u2192 payments accounts.accou nt_id"
+            },
+            {
+                "name": "accrued_interest",
+                "data_type": "decimal",
+                "description": "Interest accrued to date -"
+            },
+            {
+                "name": "approval_date",
+                "data_type": "date",
+                "description": "Date loan was approved -"
+            },
+            {
+                "name": "apr",
+                "data_type": "decimal",
+                "description": "Annual Percentage Rate -"
+            },
+            {
+                "name": "co_signer_id",
+                "data_type": "int",
+                "description": "Co-signer reference FK \u2192 customers.cust omer_id"
+            },
+            {
+                "name": "collateral_type",
+                "data_type": "varchar",
+                "description": "Type of collateral (if secured) -"
+            },
+            {
+                "name": "collateral_value",
+                "data_type": "decimal",
+                "description": "Value of collateral -"
+            },
+            {
+                "name": "created_at",
+                "data_type": "timestamp",
+                "description": "Record creation timestamp -"
+            },
+            {
+                "name": "credit_approval_level",
+                "data_type": "enum",
+                "description": null
+            },
+            {
+                "name": "current_balance",
+                "data_type": "decimal",
+                "description": "Remaining loan balance -"
+            },
+            {
+                "name": "customer_id",
+                "data_type": "int",
+                "description": "Loan borrower reference FK \u2192 customers.cust omer_id"
+            },
+            {
+                "name": "disbursement_date",
+                "data_type": "date",
+                "description": "Date funds were disbursed -"
+            },
+            {
+                "name": "employment_verification",
+                "data_type": "tinyint",
+                "description": null
+            },
+            {
+                "name": "income_verification",
+                "data_type": "tinyint",
+                "description": "Income verified flag -"
+            },
+            {
+                "name": "interest_rate",
+                "data_type": "decimal",
+                "description": "Annual interest rate -"
+            },
+            {
+                "name": "last_payment_amount",
+                "data_type": "decimal",
+                "description": "Amount of last payment -"
+            },
+            {
+                "name": "last_payment_date",
+                "data_type": "date",
+                "description": "Date of last payment -"
+            },
+            {
+                "name": "late_fee",
+                "data_type": "decimal",
+                "description": "Late payment penalty -"
+            },
+            {
+                "name": "loan_id",
+                "data_type": "int",
+                "description": "Primary key - Unique loan PK identifier"
+            },
+            {
+                "name": "loan_number",
+                "data_type": "varchar",
+                "description": "Unique loan number -"
+            },
+            {
+                "name": "loan_subtype",
+                "data_type": "varchar",
+                "description": "Sub-category of loan -"
+            },
+            {
+                "name": "loan_term_months",
+                "data_type": "int",
+                "description": "Loan term in months -"
+            },
+            {
+                "name": "loan_type",
+                "data_type": "enum",
+                "description": null
+            },
+            {
+                "name": "maturity_date",
+                "data_type": "date",
+                "description": "Loan maturity/end date -"
+            },
+            {
+                "name": "monthly_payment",
+                "data_type": "decimal",
+                "description": "Required monthly payment -"
+            },
+            {
+                "name": "next_payment_date",
+                "data_type": "date",
+                "description": "Date of next payment due -"
+            },
+            {
+                "name": "notes",
+                "data_type": "text",
+                "description": "Additional notes/comments -"
+            },
+            {
+                "name": "origination_fee",
+                "data_type": "decimal",
+                "description": "Fee for loan origination -"
+            },
+            {
+                "name": "outstanding_principal",
+                "data_type": "decimal",
+                "description": "Principal amount remaining -"
+            },
+            {
+                "name": "prepayment_penalty",
+                "data_type": "decimal",
+                "description": "Penalty for early repayment -"
+            },
+            {
+                "name": "principal_amount",
+                "data_type": "decimal",
+                "description": "Original loan amount -"
+            },
+            {
+                "name": "processing_fee",
+                "data_type": "decimal",
+                "description": "Loan processing fee -"
+            },
+            {
+                "name": "purpose",
+                "data_type": "varchar",
+                "description": "Purpose of loan -"
+            },
+            {
+                "name": "risk_rating",
+                "data_type": "enum",
+                "description": null
+            },
+            {
+                "name": "status",
+                "data_type": "enum",
+                "description": null
+            },
+            {
+                "name": "updated_at",
+                "data_type": "timestamp",
+                "description": "Record last update timestamp"
+            }
+        ]
+    },
+    {
+        "table": "merchant_accounts",
+        "synonym": "MRA",
+        "description": "Manages merchant accounts for payment processing",
+        "columns": [
+            {
+                "name": "account_number",
+                "data_type": "varchar",
+                "description": "Merchant account number -"
+            },
+            {
+                "name": "address_line1",
+                "data_type": "varchar",
+                "description": "Address line 1 -"
+            },
+            {
+                "name": "address_line2",
+                "data_type": "varchar",
+                "description": "Address line 2 -"
+            },
+            {
+                "name": "annual_revenue",
+                "data_type": "decimal",
+                "description": "Annual revenue -"
+            },
+            {
+                "name": "annual_volume",
+                "data_type": "decimal",
+                "description": "Annual processing volume -"
+            },
+            {
+                "name": "approved_date",
+                "data_type": "date",
+                "description": "Approval date -"
+            },
+            {
+                "name": "average_ticket_size",
+                "data_type": "decimal",
+                "description": "Average transaction size -"
+            },
+            {
+                "name": "business_start_date",
+                "data_type": "date",
+                "description": "Business start date -"
+            },
+            {
+                "name": "business_type",
+                "data_type": "varchar",
+                "description": "Type of business -"
+            },
+            {
+                "name": "chargeback_fee",
+                "data_type": "decimal",
+                "description": "Chargeback fee -"
+            },
+            {
+                "name": "city",
+                "data_type": "varchar",
+                "description": "City -"
+            },
+            {
+                "name": "contact_email",
+                "data_type": "varchar",
+                "description": "Contact email -"
+            },
+            {
+                "name": "contact_person",
+                "data_type": "varchar",
+                "description": "Primary contact name -"
+            },
+            {
+                "name": "contact_phone",
+                "data_type": "varchar",
+                "description": "Contact phone -"
+            },
+            {
+                "name": "country",
+                "data_type": "varchar",
+                "description": "Country -"
+            },
+            {
+                "name": "created_at",
+                "data_type": "timestamp",
+                "description": "Record creation timestamp -"
+            },
+            {
+                "name": "dba_name",
+                "data_type": "varchar",
+                "description": "Doing Business As name -"
+            },
+            {
+                "name": "discount_rate",
+                "data_type": "decimal",
+                "description": "Discount rate -"
+            },
+            {
+                "name": "email",
+                "data_type": "varchar",
+                "description": "Contact email -"
+            },
+            {
+                "name": "employee_count",
+                "data_type": "int",
+                "description": "Number of employees -"
+            },
+            {
+                "name": "merchant_category",
+                "data_type": "varchar",
+                "description": "Business category -"
+            },
+            {
+                "name": "merchant_id",
+                "data_type": "int",
+                "description": "Primary key - Unique merchant PK identifier"
+            },
+            {
+                "name": "merchant_name",
+                "data_type": "varchar",
+                "description": "Merchant business name -"
+            },
+            {
+                "name": "merchant_subcategory",
+                "data_type": "varchar",
+                "description": null
+            },
+            {
+                "name": "monthly_fee",
+                "data_type": "decimal",
+                "description": "Monthly service fee -"
+            },
+            {
+                "name": "monthly_volume",
+                "data_type": "decimal",
+                "description": "Monthly processing volume -"
+            },
+            {
+                "name": "notes",
+                "data_type": "text",
+                "description": "Additional notes -"
+            },
+            {
+                "name": "phone_number",
+                "data_type": "varchar",
+                "description": "Contact phone -"
+            },
+            {
+                "name": "processing_fee_rate",
+                "data_type": "decimal",
+                "description": "Processing fee percentage -"
+            },
+            {
+                "name": "reserve_amount",
+                "data_type": "decimal",
+                "description": "Reserve hold amount -"
+            },
+            {
+                "name": "reserve_percentage",
+                "data_type": "decimal",
+                "description": "Reserve hold percentage -"
+            },
+            {
+                "name": "risk_rating",
+                "data_type": "enum",
+                "description": null
+            },
+            {
+                "name": "settlement_account_id",
+                "data_type": "int",
+                "description": null
+            },
+            {
+                "name": "state",
+                "data_type": "varchar",
+                "description": "State -"
+            },
+            {
+                "name": "status",
+                "data_type": "enum",
+                "description": null
+            },
+            {
+                "name": "tax_id",
+                "data_type": "varchar",
+                "description": "Tax ID (EIN) -"
+            },
+            {
+                "name": "terminated_date",
+                "data_type": "date",
+                "description": "Termination date -"
+            },
+            {
+                "name": "transaction_fee",
+                "data_type": "decimal",
+                "description": "Per transaction fee -"
+            },
+            {
+                "name": "updated_at",
+                "data_type": "timestamp",
+                "description": "Record last update timestamp -"
+            },
+            {
+                "name": "website",
+                "data_type": "varchar",
+                "description": "Business website -"
+            },
+            {
+                "name": "zip_code",
+                "data_type": "varchar",
+                "description": "ZIP code -"
+            }
+        ]
+    },
+    {
+        "table": "notifications",
+        "synonym": "NOT",
+        "description": "Manages system notifications and alerts for customers and employees.",
+        "columns": [
+            {
+                "name": "additional_data",
+                "data_type": "json",
+                "description": null
+            },
+            {
+                "name": "branch_id",
+                "data_type": "int",
+                "description": "Branch recipient FK \u2192 branches.branch_id"
+            },
+            {
+                "name": "created_at",
+                "data_type": "timestamp",
+                "description": "Record creation - timestamp"
+            },
+            {
+                "name": "created_by",
+                "data_type": "int",
+                "description": "User who created - notification"
+            },
+            {
+                "name": "creation_type",
+                "data_type": "enum",
+                "description": "created"
+            },
+            {
+                "name": "customer_id",
+                "data_type": "int",
+                "description": "Customer recipient FK \u2192 customers.customer_id"
+            },
+            {
+                "name": "dismissed",
+                "data_type": "tinyint",
+                "description": "Dismissed flag -"
+            },
+            {
+                "name": "dismissed_timestamp",
+                "data_type": "datetime",
+                "description": null
+            },
+            {
+                "name": "email_sent_status",
+                "data_type": "enum",
+                "description": null
+            },
+            {
+                "name": "employee_id",
+                "data_type": "int",
+                "description": "Employee recipient FK \u2192 employees.employee_id"
+            },
+            {
+                "name": "expiry_date",
+                "data_type": "datetime",
+                "description": "TIME Notification expiry date -"
+            },
+            {
+                "name": "link_url",
+                "data_type": "varchar",
+                "description": "Link to related content -"
+            },
+            {
+                "name": "message",
+                "data_type": "text",
+                "description": "Notification message -"
+            },
+            {
+                "name": "notification_id",
+                "data_type": "int",
+                "description": null
+            },
+            {
+                "name": "notification_type",
+                "data_type": "enum",
+                "description": null
+            },
+            {
+                "name": "priority",
+                "data_type": "enum",
+                "description": null
+            },
+            {
+                "name": "push_sent_status",
+                "data_type": "enum",
+                "description": null
+            },
+            {
+                "name": "read_status",
+                "data_type": "tinyint",
+                "description": "Read/unread status -"
+            },
+            {
+                "name": "read_timestamp",
+                "data_type": "datetime",
+                "description": null
+            },
+            {
+                "name": "related_account_id",
+                "data_type": "int",
+                "description": null
+            },
+            {
+                "name": "related_loan_id",
+                "data_type": "int",
+                "description": null
+            },
+            {
+                "name": "related_transaction_id",
+                "data_type": "int",
+                "description": null
+            },
+            {
+                "name": "scheduled_time",
+                "data_type": "datetime",
+                "description": null
+            },
+            {
+                "name": "sent_time",
+                "data_type": "datetime",
+                "description": "TIME Actual sent time -"
+            },
+            {
+                "name": "sent_via_app",
+                "data_type": "tinyint",
+                "description": "Sent via app -"
+            },
+            {
+                "name": "sent_via_email",
+                "data_type": "tinyint",
+                "description": null
+            },
+            {
+                "name": "sent_via_push",
+                "data_type": "tinyint",
+                "description": "Sent via push notification -"
+            },
+            {
+                "name": "sent_via_sms",
+                "data_type": "tinyint",
+                "description": "Sent via SMS -"
+            },
+            {
+                "name": "sms_sent_status",
+                "data_type": "enum",
+                "description": null
+            },
+            {
+                "name": "subject",
+                "data_type": "varchar",
+                "description": "Notification subject -"
+            },
+            {
+                "name": "trigger_event",
+                "data_type": "varchar",
+                "description": "Event that triggered - notification"
+            },
+            {
+                "name": "updated_at",
+                "data_type": "timestamp",
+                "description": "Record last update timestamp"
+            }
+        ]
+    },
+    {
+        "table": "online_banking_users",
+        "synonym": "OBU",
+        "description": "Manages online and mobile banking user credentials",
+        "columns": [
+            {
+                "name": "account_locked_until",
+                "data_type": "datetime",
+                "description": "TIME Lock expiry time -"
+            },
+            {
+                "name": "alert_preferences",
+                "data_type": "text",
+                "description": "Alert preferences JSON -"
+            },
+            {
+                "name": "created_at",
+                "data_type": "timestamp",
+                "description": "Record creation - timestamp"
+            },
+            {
+                "name": "customer_id",
+                "data_type": "int",
+                "description": "Customer reference FK \u2192 customers.customer_id"
+            },
+            {
+                "name": "failed_login_attempts",
+                "data_type": "int",
+                "description": "Count of failed attempts -"
+            },
+            {
+                "name": "is_active",
+                "data_type": "tinyint",
+                "description": "User active status -"
+            },
+            {
+                "name": "is_locked",
+                "data_type": "tinyint",
+                "description": "Account locked flag -"
+            },
+            {
+                "name": "last_login",
+                "data_type": "datetime",
+                "description": "TIME Last login timestamp -"
+            },
+            {
+                "name": "last_login_ip",
+                "data_type": "varchar",
+                "description": "IP of last login -"
+            },
+            {
+                "name": "last_password_change",
+                "data_type": "datetime",
+                "description": "TIME Last password change - date"
+            },
+            {
+                "name": "login_notifications_enabled",
+                "data_type": "tinyint",
+                "description": null
+            },
+            {
+                "name": "mobile_app_registered",
+                "data_type": "tinyint",
+                "description": "Mobile app registered -"
+            },
+            {
+                "name": "mobile_device_id",
+                "data_type": "varchar",
+                "description": null
+            },
+            {
+                "name": "online_user_id",
+                "data_type": "int",
+                "description": "Primary key - Unique PK user identifier"
+            },
+            {
+                "name": "password_expiry",
+                "data_type": "datetime",
+                "description": "TIME Password expiry date -"
+            },
+            {
+                "name": "password_hash",
+                "data_type": "varchar",
+                "description": null
+            },
+            {
+                "name": "push_token",
+                "data_type": "varchar",
+                "description": null
+            },
+            {
+                "name": "salt",
+                "data_type": "varchar",
+                "description": null
+            },
+            {
+                "name": "security_answer1",
+                "data_type": "varchar",
+                "description": null
+            },
+            {
+                "name": "security_answer2",
+                "data_type": "varchar",
+                "description": null
+            },
+            {
+                "name": "security_answer3",
+                "data_type": "varchar",
+                "description": null
+            },
+            {
+                "name": "security_question1",
+                "data_type": "varchar",
+                "description": null
+            },
+            {
+                "name": "security_question2",
+                "data_type": "varchar",
+                "description": null
+            },
+            {
+                "name": "security_question3",
+                "data_type": "varchar",
+                "description": null
+            },
+            {
+                "name": "transaction_notifications_enabled",
+                "data_type": "tinyint",
+                "description": null
+            },
+            {
+                "name": "two_factor_email",
+                "data_type": "varchar",
+                "description": null
+            },
+            {
+                "name": "two_factor_enabled",
+                "data_type": "tinyint",
+                "description": "2FA enabled flag -"
+            },
+            {
+                "name": "two_factor_phone",
+                "data_type": "varchar",
+                "description": "Phone for 2FA -"
+            },
+            {
+                "name": "updated_at",
+                "data_type": "timestamp",
+                "description": "Record last update - timestamp"
+            },
+            {
+                "name": "username",
+                "data_type": "varchar",
+                "description": "Login username -"
+            }
+        ]
+    },
+    {
+        "table": "securities",
+        "synonym": "IVA",
+        "description": "Master list of securities available for investment",
+        "columns": [
+            {
+                "name": "avg_volume",
+                "data_type": "int",
+                "description": "Average daily volume -"
+            },
+            {
+                "name": "beta",
+                "data_type": "decimal",
+                "description": "Volatility measure -"
+            },
+            {
+                "name": "bond_rating",
+                "data_type": "varchar",
+                "description": "Bond credit rating -"
+            },
+            {
+                "name": "country",
+                "data_type": "varchar",
+                "description": "Country of origin -"
+            },
+            {
+                "name": "coupon_rate",
+                "data_type": "decimal",
+                "description": "Bond coupon rate -"
+            },
+            {
+                "name": "created_at",
+                "data_type": "timestamp",
+                "description": "Record creation - timestamp"
+            },
+            {
+                "name": "currency_code",
+                "data_type": "varchar",
+                "description": "Trading currency -"
+            },
+            {
+                "name": "current_price",
+                "data_type": "decimal",
+                "description": "Current market price -"
+            },
+            {
+                "name": "day_change",
+                "data_type": "decimal",
+                "description": "Price change from - previous"
+            },
+            {
+                "name": "day_change_percentage",
+                "data_type": "decimal",
+                "description": null
+            },
+            {
+                "name": "dividend_amount",
+                "data_type": "decimal",
+                "description": "Dividend per share -"
+            },
+            {
+                "name": "dividend_yield",
+                "data_type": "decimal",
+                "description": "Dividend yield - percentage"
+            },
+            {
+                "name": "earnings_per_share",
+                "data_type": "decimal",
+                "description": "EPS for fiscal year -"
+            },
+            {
+                "name": "ex_dividend_date",
+                "data_type": "date",
+                "description": "Ex-dividend date -"
+            },
+            {
+                "name": "industry",
+                "data_type": "varchar",
+                "description": "Specific industry -"
+            },
+            {
+                "name": "is_active",
+                "data_type": "tinyint",
+                "description": "Security active status -"
+            },
+            {
+                "name": "issued_date",
+                "data_type": "date",
+                "description": "Issue date -"
+            },
+            {
+                "name": "market_cap",
+                "data_type": "decimal",
+                "description": "Market capitalization -"
+            },
+            {
+                "name": "maturity_date",
+                "data_type": "date",
+                "description": "Maturity date (for - bonds)"
+            },
+            {
+                "name": "pe_ratio",
+                "data_type": "decimal",
+                "description": "Price-to-earnings ratio -"
+            },
+            {
+                "name": "previous_price",
+                "data_type": "decimal",
+                "description": "Previous close price -"
+            },
+            {
+                "name": "rating",
+                "data_type": "varchar",
+                "description": "Analyst rating -"
+            },
+            {
+                "name": "sector",
+                "data_type": "varchar",
+                "description": "Industry sector -"
+            },
+            {
+                "name": "security_id",
+                "data_type": "int",
+                "description": "Primary key - Unique PK security identifier"
+            },
+            {
+                "name": "security_name",
+                "data_type": "varchar",
+                "description": "Full security name -"
+            },
+            {
+                "name": "security_type",
+                "data_type": "enum",
+                "description": null
+            },
+            {
+                "name": "target_price",
+                "data_type": "decimal",
+                "description": "Analyst target price -"
+            },
+            {
+                "name": "ticker_symbol",
+                "data_type": "varchar",
+                "description": "Stock ticker symbol -"
+            },
+            {
+                "name": "updated_at",
+                "data_type": "timestamp",
+                "description": "Record last update timestamp"
+            },
+            {
+                "name": "volume",
+                "data_type": "int",
+                "description": "Current trading volume -"
+            }
+        ]
+    },
+    {
+        "table": "teller_transactions",
+        "synonym": "TTA",
+        "description": "Tracks teller-related transaction activities.",
+        "columns": [
+            {
+                "name": "branch_id",
+                "data_type": "int",
+                "description": "Branch reference FK \u2192 branches.branch_id"
+            },
+            {
+                "name": "cash_balance_end",
+                "data_type": "decimal",
+                "description": "Cash balance at - end"
+            },
+            {
+                "name": "cash_balance_start",
+                "data_type": "decimal",
+                "description": "Cash balance at - start"
+            },
+            {
+                "name": "cash_deposit_total",
+                "data_type": "decimal",
+                "description": "Total cash - deposits"
+            },
+            {
+                "name": "cash_deposits",
+                "data_type": "int",
+                "description": "Number of cash - deposits"
+            },
+            {
+                "name": "cash_withdrawal_total",
+                "data_type": "decimal",
+                "description": "Total cash - withdrawals"
+            },
+            {
+                "name": "cash_withdrawals",
+                "data_type": "int",
+                "description": "Number of cash - withdrawals"
+            },
+            {
+                "name": "check_amount_total",
+                "data_type": "decimal",
+                "description": "Total check - amount"
+            },
+            {
+                "name": "checks_processed",
+                "data_type": "int",
+                "description": "Number of checks - processed"
+            },
+            {
+                "name": "employee_id",
+                "data_type": "int",
+                "description": "Employee (teller) FK \u2192 reference employees.employee_id"
+            },
+            {
+                "name": "end_time",
+                "data_type": "datetime",
+                "description": "TIME Transaction end - time"
+            },
+            {
+                "name": "start_time",
+                "data_type": "datetime",
+                "description": "TIME Transaction start - time"
+            },
+            {
+                "name": "teller_number",
+                "data_type": "varchar",
+                "description": "Teller station - number"
+            },
+            {
+                "name": "teller_transaction_id",
+                "data_type": "int",
+                "description": "Primary key - PK Unique identifier"
+            },
+            {
+                "name": "transaction_id",
+                "data_type": "int",
+                "description": "Associated FK \u2192 transaction transactions.transaction_id"
+            },
+            {
+                "name": "transfer_total",
+                "data_type": "decimal",
+                "description": "Total transfer - amount"
+            },
+            {
+                "name": "transfers_processed",
+                "data_type": "int",
+                "description": "Number of - transfers"
+            }
+        ]
+    },
+    {
+        "table": "transactions",
+        "synonym": "TRAN",
+        "description": "Records all financial transactions across accounts",
+        "columns": [
+            {
+                "name": "account_id",
+                "data_type": "int",
+                "description": "Account involved in transaction FK \u2192 accounts.ac count_id"
+            },
+            {
+                "name": "amount",
+                "data_type": "decimal",
+                "description": "Transaction amount -"
+            },
+            {
+                "name": "approval_code",
+                "data_type": "varchar",
+                "description": "Approval code from processor -"
+            },
+            {
+                "name": "authorization_code",
+                "data_type": "varchar",
+                "description": "Transaction authorization code -"
+            },
+            {
+                "name": "balance_after",
+                "data_type": "decimal",
+                "description": "Account balance after transaction -"
+            },
+            {
+                "name": "balance_before",
+                "data_type": "decimal",
+                "description": "Account balance before - transaction"
+            },
+            {
+                "name": "category",
+                "data_type": "varchar",
+                "description": "Transaction category -"
+            },
+            {
+                "name": "currency_code",
+                "data_type": "varchar",
+                "description": "Transaction currency -"
+            },
+            {
+                "name": "description",
+                "data_type": "varchar",
+                "description": null
+            },
+            {
+                "name": "device_id",
+                "data_type": "varchar",
+                "description": null
+            },
+            {
+                "name": "exchange_rate",
+                "data_type": "decimal",
+                "description": "Exchange rate applied (if foreign) -"
+            },
+            {
+                "name": "fee_amount",
+                "data_type": "decimal",
+                "description": "Fee charged for transaction -"
+            },
+            {
+                "name": "fraud_check_flag",
+                "data_type": "tinyint",
+                "description": "Fraud detection flag -"
+            },
+            {
+                "name": "ip_address",
+                "data_type": "varchar",
+                "description": "IP address of transaction origin -"
+            },
+            {
+                "name": "is_international",
+                "data_type": "tinyint",
+                "description": "International transaction flag -"
+            },
+            {
+                "name": "is_online",
+                "data_type": "tinyint",
+                "description": "Online transaction flag -"
+            },
+            {
+                "name": "location",
+                "data_type": "varchar",
+                "description": null
+            },
+            {
+                "name": "memo",
+                "data_type": "varchar",
+                "description": null
+            },
+            {
+                "name": "merchant_category_code",
+                "data_type": "varchar",
+                "description": null
+            },
+            {
+                "name": "merchant_name",
+                "data_type": "varchar",
+                "description": null
+            },
+            {
+                "name": "posting_date",
+                "data_type": "date",
+                "description": "Date transaction was posted -"
+            },
+            {
+                "name": "reference_number",
+                "data_type": "varchar",
+                "description": "Reference number from partner -"
+            },
+            {
+                "name": "settlement_date",
+                "data_type": "date",
+                "description": "Settlement date for transaction"
+            },
+            {
+                "name": "source_channel",
+                "data_type": "enum",
+                "description": null
+            },
+            {
+                "name": "status",
+                "data_type": "enum",
+                "description": null
+            },
+            {
+                "name": "subcategory",
+                "data_type": "varchar",
+                "description": "Transaction subcategory -"
+            },
+            {
+                "name": "tax_amount",
+                "data_type": "decimal",
+                "description": "Tax applied to transaction -"
+            },
+            {
+                "name": "terminal_id",
+                "data_type": "varchar",
+                "description": "Terminal/device identifier -"
+            },
+            {
+                "name": "trace_number",
+                "data_type": "varchar",
+                "description": "Trace number for tracking -"
+            },
+            {
+                "name": "transaction_date",
+                "data_type": "datetime",
+                "description": "TIME Date and time of transaction -"
+            },
+            {
+                "name": "transaction_id",
+                "data_type": "int",
+                "description": "Primary key - Unique transaction PK identifier"
+            },
+            {
+                "name": "transaction_reference",
+                "data_type": "varchar",
+                "description": "Unique transaction reference - number"
+            },
+            {
+                "name": "transaction_subtype",
+                "data_type": "varchar",
+                "description": "Sub-category of transaction -"
+            },
+            {
+                "name": "transaction_type",
+                "data_type": "enum",
+                "description": null
+            },
+            {
+                "name": "value_date",
+                "data_type": "date",
+                "description": "Value date of transaction -"
+            }
+        ]
+    }
+]
