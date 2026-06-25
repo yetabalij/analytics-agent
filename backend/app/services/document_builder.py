@@ -26,3 +26,15 @@ def build_document(table):
         """
 
     return text
+
+table = {
+    "table": "accounts",
+    "description": "Manages all bank accounts",
+    "columns": [
+        {
+            "name": "opened_date",
+            "data_type": "date",
+            "description": "Account opening date"
+        }
+    ]
+}
