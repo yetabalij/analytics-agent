@@ -1,12 +1,13 @@
-from app.knowledge.pdf_parser import extract_pdf_text
+import os
+#from app.knowledge.pdf_parser import extract_pdf_text
 from app.knowledge.dictionary_parser import (
+    extract_pdf_text,
     extract_table_section, 
     parse_table_header, 
     extract_column_text, 
     normalize_text, 
     clean_lines, 
     merge_wrapped_lines, 
-    parse_column_row,
     extract_table_section,
     parse_table)
 
@@ -58,10 +59,33 @@ rows = merge_wrapped_lines(lines)
 #for row in rows[:10]:
     #print(parse_column_row(row))
 
+import json
+
 tables = extract_table_section(text)
 
-customer_table = parse_table(tables[0])
+catalog = []
 
-print(customer_table)
+for table in tables:
+
+    catalog.append(
+        parse_table(table)
+    )
+
+with open(
+    "app/knowledge/metadata/dictionary_catalog.json",
+    "w",
+    encoding="utf-8"
+) as f:
+
+    json.dump(
+        catalog,
+        f,
+        indent=4
+    )
+
+print(
+    f"Wrote {len(catalog)} tables successfully"
+)
+
 
 

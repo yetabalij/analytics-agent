@@ -1,4 +1,18 @@
 import re
+import pdfplumber
+
+def extract_pdf_text(pdf_path):
+
+    all_text = []
+
+    with pdfplumber.open(pdf_path) as pdf:
+        for page in pdf.pages:
+            text = page.extract_text()
+            if text:
+                all_text.append(text)   
+            
+    return "\n".join(all_text)
+
 
 def extract_table_section(text):
     pattern = r"Table Name\s+([^\n]+)"
@@ -165,10 +179,9 @@ def parse_column_row(row):
         return None
 
     return {
-        "name": "customer_id",
-        "data_type": "INT",
-        "description": "Primary key - Unique customer identifier",
-        "key": "PK"
+        "name": match.group(1).strip().lower(),
+        "data_type": match.group(2).strip(),
+        "description": match.group(3).strip()
     }
 
 def parse_table(table_section):
