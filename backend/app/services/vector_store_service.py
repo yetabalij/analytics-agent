@@ -1,18 +1,14 @@
 from langchain_chroma import Chroma
-from langchain_huggingface import (
-    HuggingFaceEmbeddings
-)
-from app.services.document_builder import(
-    build_document
-)
+from langchain_huggingface import HuggingFaceEmbeddings
+from app.services.document_builder import build_document
+
+
 class VectorStoreService:
 
     def __init__(self):
 
-        self.embedding_model = (
-            HuggingFaceEmbeddings(
-                model_name="all-MiniLM-L6-v2"
-            )
+        self.embedding_model = HuggingFaceEmbeddings(
+            model_name="all-MiniLM-L6-v2"
         )
 
         self.vector_store = Chroma(
@@ -27,25 +23,19 @@ class VectorStoreService:
         metadatas = []
 
         for table in tables:
+            documents.append(build_document(table))
 
-            document = build_document(table)
-
-            documents.append(document)
-
-            metadatas.append(
-                {
-                    "table_name": table["table"]
-                }
-            )
+            metadatas.append({
+                "table_name": table["table"]
+            })
 
         self.vector_store.add_texts(
             texts=documents,
             metadatas=metadatas
         )
 
-    def search(self, question, k=5):
-
-        return self.vector_store.similarity_search(
+    def search(self, question, k=10):
+        return self.vector_store.similarity_search_with_score(
             question,
             k=k
         )

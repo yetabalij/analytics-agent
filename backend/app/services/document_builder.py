@@ -1,40 +1,27 @@
 def build_document(table):
 
-    text = f"""
-    Table Name:
-    {table['table']}
+    text_parts = []
 
-    Description:
-    {table.get('description', '')}
+    # Table header (VERY IMPORTANT FOR RETRIEVAL)
+    text_parts.append(f"TABLE: {table['table']}")
 
-    Synonym:
-    {table.get('synonym', '')}
-    """
+    if table.get("description"):
+        text_parts.append(f"DESCRIPTION: {table['description']}")
 
-    for column in table["columns"]:
+    if table.get("synonym"):
+        text_parts.append(f"SYNONYM: {table['synonym']}")
 
-        text += f"""
+    text_parts.append("COLUMNS:")
 
-        Column Name:
-        {column['name']}
+    # Columns section
+    for column in table.get("columns", []):
 
-        Data Type:
-        {column['data_type']}
+        col_text = (
+            f"{column['name']} "
+            f"{column.get('data_type', '')} "
+            f"{column.get('description', '')}"
+        )
 
-        Description:
-        {column.get('description', '')}
-        """
+        text_parts.append(col_text)
 
-    return text
-
-table = {
-    "table": "accounts",
-    "description": "Manages all bank accounts",
-    "columns": [
-        {
-            "name": "opened_date",
-            "data_type": "date",
-            "description": "Account opening date"
-        }
-    ]
-}
+    return "\n".join(text_parts)
