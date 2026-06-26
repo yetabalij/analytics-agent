@@ -1,3 +1,10 @@
+from langchain_community.vectorstores import Chroma
+from langchain_community.embeddings import (
+    HuggingFaceEmbeddings
+)
+from app.services.document_builder import(
+    build_document
+)
 class VectorStoreService:
 
     def __init__(self):
