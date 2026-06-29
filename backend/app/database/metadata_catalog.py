@@ -1,6 +1,10 @@
 # convert database metadata into structured catalog objects
 import json
 from pathlib import Path
+from app.config.paths import (
+    METADATA_DIR,
+    CATALOG_FILE
+)
 
 from app.database.metadata_extractor import (
     get_tables,
@@ -38,16 +42,13 @@ def save_catalog():
 
     catalog = build_catalog()
 
-    output_dir = Path("app/knowledge/metadata")
-    output_dir.mkdir(parents=True, exist_ok=True)
+    METADATA_DIR.mkdir(parents=True, exist_ok=True)
 
-    output_file = output_dir / "catalog.json"
-
-    with open(output_file, "w", encoding="utf-8") as f:
+    with open(CATALOG_FILE, "w", encoding="utf-8") as f:
         json.dump(
             catalog,
             f,
             indent=4
         )
 
-    print(f"Catalog saved to {output_file}")
+    print(f"Catalog saved to {CATALOG_FILE}")
