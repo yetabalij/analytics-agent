@@ -4,14 +4,10 @@ from app.config.settings import settings
 
 
 def get_connection():
-    """
-    Create and return a MySQL database connection.
-    """
-
     return mysql.connector.connect(
-        host=settings.db_host,
-        port=settings.db_port,
-        user=settings.db_user,
-        password=settings.db_password,
-        database=settings.db_name,
+        host=settings.mysql_host,
+        port=settings.mysql_port,
+        user=settings.mysql_user,
+        password=settings.mysql_password,
+        database=settings.mysql_database,
     )
