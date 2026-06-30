@@ -1,10 +1,14 @@
 from pathlib import Path
 
 # ==========================================
-# Project Root
+# Project Root (ANCHOR)
 # ==========================================
 
-APP_DIR = Path(__file__).resolve().parent.parent
+PROJECT_ROOT = Path(__file__).resolve().parents[3]
+
+BACKEND_DIR = PROJECT_ROOT / "backend"
+
+APP_DIR = BACKEND_DIR / "app"
 
 # ==========================================
 # Knowledge
@@ -35,7 +39,5 @@ DICTIONARY_PDF = DICTIONARY_DIR / "dictionary.pdf"
 # ==========================================
 # Vector Database
 # ==========================================
-
-BACKEND_DIR = APP_DIR.parent
 
 VECTOR_DB_DIR = BACKEND_DIR / "chroma_db"
