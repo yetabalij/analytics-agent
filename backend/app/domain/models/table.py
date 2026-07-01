@@ -23,4 +23,4 @@ class Table(BaseModel):
 
     foreign_keys: List[str] = []
 
-    relationships: List[Relationship] = []
+    
