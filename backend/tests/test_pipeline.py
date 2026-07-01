@@ -1,6 +1,7 @@
 from app.core.db import get_connection
 from app.services.schema_extractor import SchemaExtractor
 from app.services.schema_mapper import SchemaMapper
+from app.services.schema_graph_builder import SchemaGraphBuilder
 
 ####### connection test #######
 def test_database_connection():
@@ -46,9 +47,28 @@ def test_schema_mapper():
     print("PKs:", first.primary_keys)
     print("FKs:", first.foreign_keys)
 
+#### SchemaGraphBuilder test #########
+def test_schema_graph_builder():
+
+    extractor = SchemaExtractor()
+    raw_schema = extractor.get_schema()
+
+    mapper = SchemaMapper()
+    tables = mapper.map(raw_schema)
+
+    builder = SchemaGraphBuilder()
+    relationships = builder.build(tables)
+
+    print("Relationships found:", len(relationships))
+
+    if relationships:
+        r = relationships[0]
+        print("Sample relationship:")
+        print(r.source_table, "→", r.target_table)
+
 
 if __name__ == "__main__":
     # test_database_connection()
     # test_schema_extractor()
-    test_schema_mapper()
-   
+    #test_schema_mapper()
+    test_schema_graph_builder()
