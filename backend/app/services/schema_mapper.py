@@ -5,11 +5,9 @@ from app.domain.models.column import Column
 
 
 class SchemaMapper:
-    """
-    Converts raw schema dictionary into domain models.
-    """
 
     def map(self, raw_schema: Dict[str, Any]) -> List[Table]:
+
         tables: List[Table] = []
 
         for table_name, table_data in raw_schema.items():
@@ -18,12 +16,18 @@ class SchemaMapper:
                 Column(
                     name=col["name"],
                     data_type=col.get("data_type"),
-                    description=None,   # enrichment later
-                    nullable=col.get("nullable", True),
+                    description=None,
+                    nullable=(col.get("nullable") == "YES"),
+
+                    # PK detection
                     primary_key=(col.get("key") == "PRI"),
-                    foreign_key=(col.get("key") == "MUL"),
-                    references_table=None,
-                    references_column=None,
+
+                    # ⭐ REAL FK DETECTION
+                    foreign_key=bool(col.get("references_table")),
+
+                    references_table=col.get("references_table"),
+                    references_column=col.get("references_column"),
+
                     aliases=[],
                     sample_values=[]
                 )
@@ -35,12 +39,15 @@ class SchemaMapper:
                 synonym=None,
                 description=None,
                 columns=columns,
+
                 primary_keys=[
                     c.name for c in columns if c.primary_key
                 ],
+
                 foreign_keys=[
                     c.name for c in columns if c.foreign_key
                 ],
+
                 aliases=[],
                 business_domain=None,
                 tags=[]

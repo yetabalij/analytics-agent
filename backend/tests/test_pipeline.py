@@ -1,10 +1,8 @@
 from app.core.db import get_connection
 from app.services.schema_extractor import SchemaExtractor
-
-from app.services.schema_extractor import SchemaExtractor
 from app.services.schema_mapper import SchemaMapper
 
-#######     connection test     #######
+####### connection test #######
 def test_database_connection():
     conn = get_connection()
 
@@ -28,6 +26,7 @@ def test_schema_extractor():
     print("Sample table:", first_table)
     print(schema[first_table])
 
+
 ######## SchemaMapper test #########
 def test_schema_mapper():
 
@@ -49,8 +48,7 @@ def test_schema_mapper():
 
 
 if __name__ == "__main__":
-    #test_database_connection()
-    #test_schema_extractor()
+    # test_database_connection()
+    # test_schema_extractor()
     test_schema_mapper()
-    print("✓ Schema mapping completed successfully")
-    
+   
