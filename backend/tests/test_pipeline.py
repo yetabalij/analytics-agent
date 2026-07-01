@@ -1,6 +1,6 @@
 from app.core.db import get_connection
+from app.services.schema_extractor import SchemaExtractor
 
-"""
 #######     connection test     #######
 def test_database_connection():
     conn = get_connection()
@@ -12,21 +12,21 @@ def test_database_connection():
     conn.close()
 
 
-if __name__ == "__main__":
-    test_database_connection()
-"""
-
 ######### SchemaExtractor test #########
-from app.services.schema_extractor import SchemaExtractor
+def test_schema_extractor():
+    extractor = SchemaExtractor()
+
+    schema = extractor.get_schema()
+
+    print("Tables found:", len(schema))
+
+    first_table = list(schema.keys())[0]
+
+    print("Sample table:", first_table)
+    print(schema[first_table])
 
 
-extractor = SchemaExtractor()
-
-tables = extractor._load_tables()
-
-print("\nTables found:")
-
-for table in tables:
-    print(f" - {table}")
-
-print(f"\nTotal tables: {len(tables)}")
+if __name__ == "__main__":
+    #test_database_connection()
+    test_schema_extractor()
+    
